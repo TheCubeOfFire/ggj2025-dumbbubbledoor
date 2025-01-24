@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://bltmj0yrnhuj7"]
+
+[ext_resource type="Script" path="res://menus/player_selection/player_selection.gd" id="1_rl3rk"]
+[ext_resource type="PackedScene" uid="uid://c1bchpq8mi6ed" path="res://menus/player_selection/player_input_selector.tscn" id="1_rnhru"]
+
+[node name="PlayerSelection" type="Control" node_paths=PackedStringArray("player_input_selectors")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rl3rk")
+next_scene_path = "res://Map/Arena.tscn"
+player_confirm_physical_key = 32
+player_confirm_gamepad_button = 0
+player_input_selectors = [NodePath("LeftPlayer"), NodePath("RightPlayer")]
+
+[node name="LeftPlayer" parent="." instance=ExtResource("1_rnhru")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_right = 0.0
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 1
+title_text = "Left Player"
+player_index = 0
+select_physical_key_code = 81
+select_gamepad_button = 9
+
+[node name="RightPlayer" parent="." instance=ExtResource("1_rnhru")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 0
+title_text = "Right Player"
+player_index = 1
+select_physical_key_code = 69
+select_gamepad_button = 10

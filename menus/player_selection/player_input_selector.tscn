@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://c1bchpq8mi6ed"]
+
+[ext_resource type="Script" path="res://menus/player_selection/player_input_selector.gd" id="1_b4iox"]
+[ext_resource type="Texture2D" uid="uid://c6xdpyt4d7d5n" path="res://menus/player_selection/controller_icons/keyboard_arrows.png" id="2_6sxtf"]
+[ext_resource type="Texture2D" uid="uid://crghteom8ooaw" path="res://menus/player_selection/controller_icons/mouse_small.png" id="3_88ghn"]
+[ext_resource type="Texture2D" uid="uid://x37dg6xvjjvv" path="res://menus/player_selection/controller_icons/gamepad1.png" id="4_c6fts"]
+[ext_resource type="Texture2D" uid="uid://cc7mw5eq500xj" path="res://menus/player_selection/controller_icons/gamepad2.png" id="5_1vmdy"]
+[ext_resource type="Texture2D" uid="uid://k0ogb3quyjlr" path="res://menus/player_selection/controller_icons/gamepad3.png" id="6_x2pm4"]
+[ext_resource type="Texture2D" uid="uid://dcaaapsd4wewl" path="res://menus/player_selection/controller_icons/gamepad4.png" id="7_u1cpf"]
+
+[node name="PlayerInputSelector" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b4iox")
+keyboard_texture = ExtResource("2_6sxtf")
+mouse_texture = ExtResource("3_88ghn")
+gamepad_textures = Array[Texture2D]([ExtResource("4_c6fts"), ExtResource("5_1vmdy"), ExtResource("6_x2pm4"), ExtResource("7_u1cpf")])
+current_controller_node_path = NodePath("ControllerHBoxContainer")
+
+[node name="TitleLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Player
+"
+
+[node name="StatusLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ControllerHBoxContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
