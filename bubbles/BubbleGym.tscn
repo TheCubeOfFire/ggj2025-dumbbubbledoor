@@ -1,15 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqibguwxjj4k8"]
+[gd_scene load_steps=6 format=3 uid="uid://cwcae8dma3fep"]
 
-[ext_resource type="PackedScene" uid="uid://6qqli7csrfdu" path="res://Goals/goal.tscn" id="1_orbya"]
-[ext_resource type="Material" uid="uid://drcwsv8agou3e" path="res://Map/FloorMaterial.tres" id="1_y3b3u"]
-[ext_resource type="Material" uid="uid://cshjkxucqox8d" path="res://Map/WallMaterial.tres" id="2_yc8p0"]
+[ext_resource type="Material" uid="uid://drcwsv8agou3e" path="res://Map/FloorMaterial.tres" id="1_oh1dj"]
+[ext_resource type="Material" uid="uid://cshjkxucqox8d" path="res://Map/WallMaterial.tres" id="2_uufnv"]
+[ext_resource type="PackedScene" uid="uid://6qqli7csrfdu" path="res://Goals/goal.tscn" id="3_8nu8f"]
+[ext_resource type="PackedScene" uid="uid://ch4gbfrgrgxom" path="res://bubbles/Bubble.tscn" id="4_k7pks"]
+[ext_resource type="PackedScene" uid="uid://deivg1e6f3v0q" path="res://arrows/Arrow.tscn" id="5_rl0h5"]
 
 [node name="Map" type="Node3D"]
 
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 60, 0, 0, 0)
 use_collision = true
-material = ExtResource("1_y3b3u")
+material = ExtResource("1_oh1dj")
 
 [node name="MainCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 50, 0)
@@ -23,51 +25,60 @@ transform = Transform3D(1, 0, 0, 0, 0.356575, 0.934267, 0, -0.934267, 0.356575, 
 [node name="Wall" type="CSGBox3D" parent="Walls"]
 transform = Transform3D(110, 0, 0, 0, 10, 0, 0, 0, 10, 0, 5.40113, -34.9861)
 use_collision = true
-material = ExtResource("2_yc8p0")
+material = ExtResource("2_uufnv")
 
 [node name="Wall5" type="CSGBox3D" parent="Walls"]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 20, -44.539, 5.40113, 20.7289)
 use_collision = true
 size = Vector3(0.747559, 1, 1)
-material = ExtResource("2_yc8p0")
+material = ExtResource("2_uufnv")
 
 [node name="Wall8" type="CSGBox3D" parent="Walls"]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 20, -44.539, 5.40113, -20.3319)
 use_collision = true
 size = Vector3(0.747559, 1, 1)
-material = ExtResource("2_yc8p0")
+material = ExtResource("2_uufnv")
 
 [node name="Wall6" type="CSGBox3D" parent="Walls"]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 20, 44.0328, 5.40113, 20.7289)
 use_collision = true
 size = Vector3(0.747559, 1, 1)
-material = ExtResource("2_yc8p0")
+material = ExtResource("2_uufnv")
 
 [node name="Wall7" type="CSGBox3D" parent="Walls"]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 20, 44.0327, 5.40113, -20.4692)
 use_collision = true
 size = Vector3(0.747559, 1, 1)
-material = ExtResource("2_yc8p0")
+material = ExtResource("2_uufnv")
 
 [node name="Wall2" type="CSGBox3D" parent="Walls"]
 transform = Transform3D(110, 0, 0, 0, 10, 0, 0, 0, 10, 0, 5.40113, 34.9809)
 use_collision = true
-material = ExtResource("2_yc8p0")
+material = ExtResource("2_uufnv")
 
 [node name="Wall3" type="CSGBox3D" parent="Walls"]
 transform = Transform3D(-3.4532e-06, 0, 10, 0, 10, 0, -79, 0, -4.37114e-07, -54.6305, 5.40113, -0.00739098)
 use_collision = true
-material = ExtResource("2_yc8p0")
+material = ExtResource("2_uufnv")
 
 [node name="Wall4" type="CSGBox3D" parent="Walls"]
 transform = Transform3D(-3.4532e-06, 0, 10, 0, 10, 0, -79, 0, -4.37114e-07, 54.4312, 5.40113, -0.00739098)
 use_collision = true
-material = ExtResource("2_yc8p0")
+material = ExtResource("2_uufnv")
 
 [node name="Goals" type="Node3D" parent="."]
 
-[node name="Goal1" parent="Goals" instance=ExtResource("1_orbya")]
+[node name="Goal1" parent="Goals" instance=ExtResource("3_8nu8f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.9302, 5.4, 1.25167)
 
-[node name="Goal2" parent="Goals" instance=ExtResource("1_orbya")]
+[node name="Goal2" parent="Goals" instance=ExtResource("3_8nu8f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.2605, 5.4, -2.71724)
+
+[node name="Bubble" parent="." instance=ExtResource("4_k7pks")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.342834, 3.58386, -0.428752)
+
+[node name="Bubble2" parent="." instance=ExtResource("4_k7pks")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.67885, 4.17203, -0.428752)
+
+[node name="Arrow" parent="." instance=ExtResource("5_rl0h5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.283217, 16.8145, -0.976727)
