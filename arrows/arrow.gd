@@ -34,5 +34,5 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 
 
 func _physics_process(delta: float) -> void:
-    if(global_position.y < -400):
+    if(global_position.y < -400 || abs(global_position.x) >300 || abs(global_position.y) >300):
         queue_free()

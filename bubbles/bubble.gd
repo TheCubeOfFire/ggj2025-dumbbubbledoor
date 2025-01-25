@@ -43,7 +43,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
         var force = _compute_explosion_direction(body)
         force *= bubble_push_force_multiplier / self.global_position.distance_to(body.global_position)
         body.push(force)
-    elif is_instance_of(body, Arrow) && body != _arrow_touched:
+    elif is_instance_of(body, Arrow):
         body.push_from_bubble(_compute_explosion_direction(body), self.global_position)
 
 func _compute_explosion_direction(body: Node3D) -> Vector3:
@@ -51,7 +51,7 @@ func _compute_explosion_direction(body: Node3D) -> Vector3:
     var self_position = self.global_position
     var other_position = body.global_position
     force.x = other_position.x - self_position.x
-    force.y = other_position.y - self_position.y
+    force.z = other_position.z - self_position.z
     force.normalized()
     return force
 
@@ -64,5 +64,5 @@ func _disappear():
 
 
 func _physics_process(delta: float) -> void:
-    if(global_position.y < -400):
+    if(global_position.y < -400 || abs(global_position.x) >300 || abs(global_position.y) >300):
         queue_free()
