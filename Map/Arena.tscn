@@ -79,7 +79,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.2605, 5.4, -2.71724)
 
 [node name="LeftPlayer" parent="Players" instance=ExtResource("4_ntw2r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 0)
+bubble_container_node_path = NodePath("../../Bubbles")
+arrow_container_node_path = NodePath("../../Arrows")
 
 [node name="RightPlayer" parent="Players" instance=ExtResource("4_ntw2r")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 39, 0, 0)
 flipped = true
+bubble_container_node_path = NodePath("../../Bubbles")
+arrow_container_node_path = NodePath("../../Arrows")
+
+[node name="Bubbles" type="Node3D" parent="."]
+
+[node name="Arrows" type="Node3D" parent="."]

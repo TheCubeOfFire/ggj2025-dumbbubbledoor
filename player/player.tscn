@@ -13,6 +13,7 @@ size = Vector2(20, 1)
 script = ExtResource("1_4o028")
 
 [node name="DirectionPivot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="ShootDirectionMesh" type="MeshInstance3D" parent="DirectionPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3, 0)

@@ -26,7 +26,7 @@ func _ready() -> void:
     apply_central_impulse(initial_force * initial_direction.normalized())
 
 func _on_body_entered(body: Node) -> void:
-    if is_instance_of(body, Arrow) && !_exploded: 
+    if is_instance_of(body, Arrow) && !_exploded:
         body.bounce_on_bubble(_compute_explosion_direction(body))
         _arrow_touched = body
         _explosion_area_collision.set_deferred("disabled",false)
@@ -45,7 +45,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
         body.push(force)
     elif is_instance_of(body, Arrow) && body != _arrow_touched:
         body.push_from_bubble(_compute_explosion_direction(body), self.global_position)
-        
+
 func _compute_explosion_direction(body: Node3D) -> Vector3:
     var force = Vector3(0,0,0)
     var self_position = self.global_position
