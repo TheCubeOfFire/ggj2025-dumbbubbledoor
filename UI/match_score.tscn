@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://ms8tm6puffrj"]
+
+[ext_resource type="Script" path="res://UI/match_score.gd" id="1_x0vil"]
+
+[node name="MatchScore" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x0vil")
+
+[node name="Score0" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -126.0
+offset_top = 25.0
+offset_right = -26.0
+offset_bottom = 55.0
+grow_horizontal = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="Separator" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 25.0
+offset_right = 20.0
+offset_bottom = 55.0
+grow_horizontal = 2
+text = ":"
+horizontal_alignment = 1
+
+[node name="Score1" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 24.0
+offset_top = 25.0
+offset_right = 124.0
+offset_bottom = 55.0
+grow_horizontal = 2
+text = "0"

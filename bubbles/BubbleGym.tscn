@@ -1,12 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwcae8dma3fep"]
+[gd_scene load_steps=8 format=3 uid="uid://cwcae8dma3fep"]
 
 [ext_resource type="Material" uid="uid://drcwsv8agou3e" path="res://Map/FloorMaterial.tres" id="1_oh1dj"]
+[ext_resource type="PackedScene" uid="uid://dvt7nvfj6o5td" path="res://game_manager/game_manager.tscn" id="2_oy1b8"]
 [ext_resource type="Material" uid="uid://cshjkxucqox8d" path="res://Map/WallMaterial.tres" id="2_uufnv"]
 [ext_resource type="PackedScene" uid="uid://6qqli7csrfdu" path="res://Goals/goal.tscn" id="3_8nu8f"]
 [ext_resource type="PackedScene" uid="uid://ch4gbfrgrgxom" path="res://bubbles/Bubble.tscn" id="4_k7pks"]
 [ext_resource type="PackedScene" uid="uid://deivg1e6f3v0q" path="res://arrows/Arrow.tscn" id="5_rl0h5"]
+[ext_resource type="PackedScene" uid="uid://ms8tm6puffrj" path="res://UI/match_score.tscn" id="6_kbllt"]
 
 [node name="Map" type="Node3D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MatchScore" parent="CanvasLayer" instance=ExtResource("6_kbllt")]
+offset_left = 1.0
+offset_right = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="GameManager" parent="." instance=ExtResource("2_oy1b8")]
 
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 60, 0, 0, 0)
@@ -70,6 +81,8 @@ material = ExtResource("2_uufnv")
 
 [node name="Goal1" parent="Goals" instance=ExtResource("3_8nu8f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.9302, 5.4, 1.25167)
+priority = 1
+player_id = 1
 
 [node name="Goal2" parent="Goals" instance=ExtResource("3_8nu8f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.2605, 5.4, -2.71724)
@@ -81,7 +94,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.342834, 3.58386, -0.428752
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.67885, 4.17203, -0.428752)
 
 [node name="Arrow" parent="." instance=ExtResource("5_rl0h5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.283217, 3.05009, 11.7274)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.7855, 3.05009, 2.20446)
+initial_direction = Vector3(1, 0, 0)
 
 [node name="Arrow2" parent="." instance=ExtResource("5_rl0h5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.49827, 3.05009, 11.7274)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6539, 3.05009, 0.555914)
+initial_direction = Vector3(1, 0, 0)
