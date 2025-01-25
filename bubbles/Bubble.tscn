@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ch4gbfrgrgxom"]
+[gd_scene load_steps=7 format=3 uid="uid://ch4gbfrgrgxom"]
 
 [ext_resource type="Script" path="res://bubbles/bubble.gd" id="1_0x0o0"]
+[ext_resource type="PhysicsMaterial" uid="uid://dmclqapyrmvtu" path="res://Bubbles/BubblePhysicsMaterial.tres" id="1_pjam5"]
 [ext_resource type="Material" uid="uid://dgonxkp0r7gna" path="res://bubbles/BubbleMaterial.tres" id="1_qv1ux"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wiu5i"]
@@ -10,10 +11,12 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_5q6nl"]
 
 [node name="Bubble" type="RigidBody3D"]
+axis_lock_linear_y = true
+physics_material_override = ExtResource("1_pjam5")
 contact_monitor = true
 max_contacts_reported = 10
 script = ExtResource("1_0x0o0")
-push_force_multiplier = 10.0
+bubble_push_force_multiplier = 10.0
 
 [node name="BubbleCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)

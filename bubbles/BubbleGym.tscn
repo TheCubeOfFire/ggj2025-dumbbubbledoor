@@ -81,4 +81,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.342834, 3.58386, -0.428752
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.67885, 4.17203, -0.428752)
 
 [node name="Arrow" parent="." instance=ExtResource("5_rl0h5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.283217, 16.8145, -0.976727)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.283217, 3.05009, 11.7274)
+
+[node name="Arrow2" parent="." instance=ExtResource("5_rl0h5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.49827, 3.05009, 11.7274)
