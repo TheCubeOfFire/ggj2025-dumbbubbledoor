@@ -2,6 +2,12 @@ class_name Bubble
 
 extends RigidBody3D
 
+## magnitude of the launch force
+@export var initial_force: float
+
+## launch direction of the arrow
+@export var initial_direction: Vector3
+
 ## multiplier when an explosion from an other bubble pushes this bubble
 @export var bubble_push_force_multiplier: float
 
@@ -15,6 +21,9 @@ var _arrow_touched: Node3D
 
 var _exploded: bool = false
 
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+    apply_central_impulse(initial_force * initial_direction.normalized())
 
 func _on_body_entered(body: Node) -> void:
     if is_instance_of(body, Arrow) && !_exploded: 
