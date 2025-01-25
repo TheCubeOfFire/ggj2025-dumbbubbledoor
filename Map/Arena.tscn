@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqibguwxjj4k8"]
+[gd_scene load_steps=10 format=3 uid="uid://cqibguwxjj4k8"]
 
 [ext_resource type="Script" path="res://Map/arena.gd" id="1_21lse"]
 [ext_resource type="PackedScene" uid="uid://6qqli7csrfdu" path="res://Goals/goal.tscn" id="1_orbya"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dvt7nvfj6o5td" path="res://game_manager/game_manager.tscn" id="3_7oehc"]
 [ext_resource type="PackedScene" uid="uid://dmx61imxe1t4v" path="res://player/player.tscn" id="4_ntw2r"]
 [ext_resource type="PackedScene" uid="uid://dayly4pvdvtsb" path="res://obstacles/bouncer.tscn" id="8_tl4ky"]
+[ext_resource type="PackedScene" uid="uid://dmi3nbrha6kqn" path="res://spawners/bubble_spawner.tscn" id="9_6ypwk"]
 
 [node name="Map" type="Node3D"]
 script = ExtResource("1_21lse")
@@ -112,3 +113,17 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 13.2981, 1.52962, 13.3908)
 
 [node name="Bouncer2" parent="Obstacles" instance=ExtResource("8_tl4ky")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -11.6635, 1.52962, -12.2495)
+
+[node name="Spawners" type="Node3D" parent="."]
+
+[node name="spawner" parent="Spawners" instance=ExtResource("9_6ypwk")]
+transform = Transform3D(70.1451, 0, 0, 0, 18.2676, 0, 0, 0, 3.6953, 0, 0, -26.995)
+bubble_container_node_path = NodePath("../../Bubbles")
+_initial_direction_min = Vector3(-1, 0, 0)
+_initial_direction_max = Vector3(1, 0, 1)
+
+[node name="spawner2" parent="Spawners" instance=ExtResource("9_6ypwk")]
+transform = Transform3D(70.1451, 0, 0, 0, 18.2676, 0, 0, 0, 3.6953, 0, 0, 27.3627)
+bubble_container_node_path = NodePath("../../Bubbles")
+_initial_direction_min = Vector3(-1, 0, -1)
+_initial_direction_max = Vector3(1, 0, 0)

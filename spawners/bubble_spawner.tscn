@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmi3nbrha6kqn"]
+
+[ext_resource type="Script" path="res://spawners/bubble_spawner.gd" id="1_klgdi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r4a2p"]
+
+[node name="spawner" type="Node3D"]
+script = ExtResource("1_klgdi")
+min_force = 10.0
+max_force = 15.0
+min_interval = 1.0
+max_interval = 7.0
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_r4a2p")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
