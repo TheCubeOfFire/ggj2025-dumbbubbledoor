@@ -5,6 +5,9 @@ extends RigidBody3D
 ## magnitude of the launch force
 @export var initial_force: float
 
+## max speed for the arrows
+@export var max_speed: float
+
 ## launch direction of the arrow
 @export var initial_direction: Vector3
 
@@ -23,3 +26,13 @@ func bounce_on_bubble(force: Vector3):
 
 func push_from_bubble(force: Vector3, explosion_point: Vector3):
     apply_central_impulse(bubble_force_multiplier * force / explosion_point.distance_to(self.global_position))
+
+
+func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
+    var norm = min(max_speed, state.linear_velocity.length())
+    state.linear_velocity = state.linear_velocity.normalized() * norm
+
+
+func _physics_process(delta: float) -> void:
+    if(global_position.y < -400):
+        queue_free()

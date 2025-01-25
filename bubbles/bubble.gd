@@ -61,3 +61,8 @@ func push(force: Vector3):
 func _disappear():
     _explosion_area_collision.set_deferred("disabled",true)
     queue_free()
+
+
+func _physics_process(delta: float) -> void:
+    if(global_position.y < -400):
+        queue_free()
