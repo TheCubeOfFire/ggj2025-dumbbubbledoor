@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ch4gbfrgrgxom"]
+[gd_scene load_steps=8 format=3 uid="uid://ch4gbfrgrgxom"]
 
 [ext_resource type="Script" path="res://bubbles/bubble.gd" id="1_0x0o0"]
 [ext_resource type="PhysicsMaterial" uid="uid://dmclqapyrmvtu" path="res://bubbles/BubblePhysicsMaterial.tres" id="1_pjam5"]
 [ext_resource type="Material" uid="uid://dgonxkp0r7gna" path="res://bubbles/BubbleMaterial.tres" id="1_qv1ux"]
+[ext_resource type="AudioStream" uid="uid://mdei22y74stc" path="res://sounds/files/bubble_pop.mp3" id="4_ievb1"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wiu5i"]
 
@@ -39,6 +40,10 @@ disabled = true
 
 [node name="LifetimeTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_ievb1")
+volume_db = 15.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="ExplosionArea" to="." method="_on_area_3d_body_entered"]

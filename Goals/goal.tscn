@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://6qqli7csrfdu"]
+[gd_scene load_steps=4 format=3 uid="uid://6qqli7csrfdu"]
 
 [ext_resource type="Script" path="res://Goals/goal.gd" id="1_mktck"]
+[ext_resource type="AudioStream" uid="uid://beqv51bo8ul1q" path="res://sounds/files/but.mp3" id="2_f3nld"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_77562"]
 size = Vector3(7, 28.5254, 32.6724)
@@ -12,6 +13,10 @@ script = ExtResource("1_mktck")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.23383, 0, 0)
 shape = SubResource("BoxShape3D_77562")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_f3nld")
+volume_db = 17.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -19,6 +19,8 @@ extends GeneralRigidbody
 
 @onready var _lifetime_timer: Timer = $LifetimeTimer
 
+@onready var audio_player: AudioStreamPlayer3D = $AudioStreamPlayer3D
+
 var _arrow_touched: Node3D
 
 var _exploded: bool = false
@@ -42,8 +44,12 @@ func _explode():
         _mesh.visible = false
         _exploded = true
         _bubble_collision.set_deferred("disabled",true)
+        audio_player.play(0.5)
         var _timer = get_tree().create_timer(0.1)
         await _timer.timeout
+        _bubble_collision.set_deferred("disabled",false)
+        var _timer2 = get_tree().create_timer(1)
+        await _timer2.timeout
         _disappear()
 
 

@@ -35,6 +35,7 @@ var _current_cooldown := 0.0
 
 @onready var _arrow_container_node := get_node(arrow_container_node_path) as Node3D
 @onready var _bubble_container_node := get_node(bubble_container_node_path) as Node3D
+@onready var audio_player: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 
 func _ready() -> void:
@@ -86,6 +87,7 @@ func _shoot_projectile(projectile_scene: PackedScene, initial_impulse: float, pr
         new_projectile.initial_direction = _direction_pivot.global_transform.basis.x
     projectile_container.add_child(new_projectile)
     new_projectile.global_position = _direction_pivot.global_position
+    audio_player.play()
 
 
 func _is_input_just_pressed(input_type: InputManager.InputActionType) -> bool:

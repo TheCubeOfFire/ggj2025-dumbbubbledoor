@@ -1,9 +1,12 @@
 extends Node
 
 const VICTORY_SCREEN := preload("res://menus/victory_screen/victory_screen.tscn")
+const START_JINGLE := preload("res://sounds/files/game-start.mp3")
+const END_JINGLE := preload("res://sounds/files/game-over.mp3")
 
 ## score to win the game
 @export var victory_score: int
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 ## time to wait after game is over
 @export var game_over_cooldown: float
@@ -22,6 +25,9 @@ var _score_1_value: int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     reset_scores()
+    MusicPlayer.play_music()
+    audio_stream_player.stream = START_JINGLE
+    audio_stream_player.play()
 
 
 func increase_score(player_id: int):
@@ -48,6 +54,8 @@ func reset_scores():
 
 func victory(winner_id: int):
     if(!_is_victory_triggered):
+        audio_stream_player.stream = END_JINGLE
+        audio_stream_player.play()
         _is_victory_triggered = true
         left_player.is_game_over = true
         right_player.is_game_over = true
