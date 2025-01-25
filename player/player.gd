@@ -9,7 +9,6 @@ const INITIAL_ARROW_IMPULSE: float = 30.0
 const ARROW: PackedScene = preload("res://arrows/Arrow.tscn")
 const BUBBLE: PackedScene = preload("res://bubbles/Bubble.tscn")
 
-
 @export var controller_index := -1
 @export var flipped := false
 
@@ -21,6 +20,7 @@ const BUBBLE: PackedScene = preload("res://bubbles/Bubble.tscn")
 @export_node_path("Node3D") var bubble_container_node_path := ^""
 @export_node_path("Node3D") var arrow_container_node_path := ^""
 
+@export var is_game_over = false
 
 var _default_rotation := PI if flipped else 0.0
 var _current_rotation := 0.0
@@ -42,7 +42,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-    if controller_index < 0 || controller_index >= InputManager.get_player_count():
+    if controller_index < 0 || controller_index >= InputManager.get_player_count() || is_game_over:
         return
 
     if _current_cooldown > 0.0:

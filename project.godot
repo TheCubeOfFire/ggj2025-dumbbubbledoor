@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GlobalInputs="*res://globals/global_inputs.gd"
 InputManager="*res://globals/input_manager.gd"
+GlobalWinner="*res://globals/global_winner.gd"
 
 [input]
 

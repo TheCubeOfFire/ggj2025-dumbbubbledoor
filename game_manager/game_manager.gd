@@ -1,14 +1,23 @@
 extends Node
 
+const VICTORY_SCREEN := preload("res://menus/victory_screen/victory_screen.tscn")
+
 ## score to win the game
 @export var victory_score: int
 
+## time to wait after game is over
+@export var game_over_cooldown: float
+
 @onready var _score_ui: Node = $"../CanvasLayer/MatchScore"
+@onready var left_player: Player = $"../Players/LeftPlayer"
+@onready var right_player: Player = $"../Players/RightPlayer"
+
 
 var _is_victory_triggered = false
 
 var _score_0_value: int
 var _score_1_value: int
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,6 +25,8 @@ func _ready() -> void:
 
 
 func increase_score(player_id: int):
+    if _is_victory_triggered:
+        return
     if(player_id == 1):
         _score_0_value += 1
         if(_score_0_value >= victory_score):
@@ -38,4 +49,10 @@ func reset_scores():
 func victory(winner_id: int):
     if(!_is_victory_triggered):
         _is_victory_triggered = true
-        print("Player " + str(winner_id) + " won!")
+        left_player.is_game_over = true
+        right_player.is_game_over = true
+        _score_ui.display_game_over()
+        GlobalWinner.winner_id = winner_id
+        var _timer = get_tree().create_timer(game_over_cooldown)
+        await _timer.timeout
+        get_tree().change_scene_to_packed(VICTORY_SCREEN)
