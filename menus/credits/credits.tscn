@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://wpik080nbope"]
+
+[ext_resource type="Script" path="res://menus/credits/credits.gd" id="1_hi17w"]
+[ext_resource type="LabelSettings" uid="uid://cn2ri70ji55q1" path="res://menus/credits/credits_settings.tres" id="1_rbv1y"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hi17w")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 508.0
+text = "A game by:
+Fabien Matusalem
+Erwann Le Guilly
+Jules Ramos
+
+Created for the Global Game Jam 2025
+Theme: Bubbles"
+label_settings = ExtResource("1_rbv1y")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -181.0
+offset_top = -103.0
+offset_right = 179.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back to main menu"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,5 +1,6 @@
 extends Control
 
+const CREDITS := preload("res://menus/credits/credits.tscn")
 
 @export var play_scene: PackedScene
 
@@ -18,8 +19,7 @@ func _on_play_button_pressed() -> void:
 
 
 func _on_credits_button_pressed() -> void:
-    pass
-    #get_tree().change_scene_to_file("res://menus/credits_menu.tscn")
+    get_tree().change_scene_to_packed(CREDITS)
 
 
 func _on_quit_button_pressed() -> void:
