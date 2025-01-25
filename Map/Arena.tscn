@@ -109,10 +109,10 @@ arrow_container_node_path = NodePath("../../Arrows")
 [node name="Obstacles" type="Node3D" parent="."]
 
 [node name="Bouncer" parent="Obstacles" instance=ExtResource("8_tl4ky")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 13.2981, 1.52962, 13.3908)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 13.2981, 3.5, 13.3908)
 
 [node name="Bouncer2" parent="Obstacles" instance=ExtResource("8_tl4ky")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -11.6635, 1.52962, -12.2495)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -11.6635, 3.5, -12.2495)
 
 [node name="Spawners" type="Node3D" parent="."]
 

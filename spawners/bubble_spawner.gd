@@ -20,22 +20,26 @@ const BUBBLE: PackedScene = preload("res://bubbles/Bubble.tscn")
 @export var _initial_direction_max: Vector3
 
 @onready var _bubble_container_node := get_node(bubble_container_node_path) as Node3D
+@onready var _player: Player = $"../../Players/LeftPlayer"
+
+@onready var timer: Timer = $Timer
 
 var min_spawn_position: Vector3
 var max_spawn_position: Vector3
-
-@onready var timer: Timer = $Timer
+var spawn_y: float
 
 
 func _ready() -> void:
     min_spawn_position = global_position - (scale/2)
     max_spawn_position = global_position + (scale/2)
+    spawn_y = _player.get_spawn_pos().y
     _reset_timer()
 
 func _gen_random_pos():
     var x = randf_range(min_spawn_position.x, max_spawn_position.x)
     var z = randf_range(min_spawn_position.z, max_spawn_position.z)
-    return Vector3(x, 0, z)
+    var y = spawn_y
+    return Vector3(x, y, z)
     
 func _gen_random_angle():
     var x = randf_range(_initial_direction_min.x, _initial_direction_max.x)
