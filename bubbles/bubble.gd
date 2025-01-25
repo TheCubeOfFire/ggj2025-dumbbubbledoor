@@ -5,20 +5,39 @@ extends GeneralRigidbody
 ## multiplier when an explosion from an other bubble pushes this bubble
 @export var bubble_push_force_multiplier: float
 
+## min bubble lifetime
+@export var min_lifetime: float
+
+## max bubble lifetime
+@export var max_lifetime: float
+
 @onready var _explosion_area_collision: CollisionShape3D = $ExplosionArea/CollisionShape3D
 
 @onready var _mesh: MeshInstance3D = $Mesh
 
 @onready var _bubble_collision: CollisionShape3D = $BubbleCollision
 
+@onready var _lifetime_timer: Timer = $LifetimeTimer
+
 var _arrow_touched: Node3D
 
 var _exploded: bool = false
 
+
+func _ready() -> void:
+    super()
+    _lifetime_timer.wait_time = randf_range(min_lifetime, max_lifetime)
+    _lifetime_timer.start()
+
+
 func _on_body_entered(body: Node) -> void:
     if is_instance_of(body, Arrow) && !_exploded:
+        _explode()
         body.bounce_on_bubble(_compute_explosion_direction(body))
         _arrow_touched = body
+    
+    
+func _explode():
         _explosion_area_collision.set_deferred("disabled",false)
         _mesh.visible = false
         _exploded = true
@@ -51,3 +70,7 @@ func push(force: Vector3):
 func _disappear():
     _explosion_area_collision.set_deferred("disabled",true)
     queue_free()
+
+
+func _on_lifetime_timer_timeout() -> void:
+    _explode()

@@ -8,6 +8,8 @@ extends GeneralRigidbody
 ## multiplier to the bubble explosion force when this is in the radius of an explosion without having caused it
 @export var bubble_force_multiplier: float
 
+@export var is_active = false
+
 func bounce_on_bubble(force: Vector3):
     var speed = linear_velocity.length()
     linear_velocity = Vector3.ZERO

@@ -16,7 +16,9 @@ physics_material_override = ExtResource("1_pjam5")
 contact_monitor = true
 max_contacts_reported = 10
 script = ExtResource("1_0x0o0")
-bubble_push_force_multiplier = 10.0
+bubble_push_force_multiplier = 15.0
+min_lifetime = 18.0
+max_lifetime = 23.0
 
 [node name="BubbleCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -31,9 +33,13 @@ surface_material_override/0 = ExtResource("1_qv1ux")
 collision_layer = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ExplosionArea"]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
 shape = SubResource("SphereShape3D_5q6nl")
 disabled = true
 
+[node name="LifetimeTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="ExplosionArea" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="LifetimeTimer" to="." method="_on_lifetime_timer_timeout"]
