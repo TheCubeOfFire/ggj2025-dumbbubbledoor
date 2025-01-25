@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmx61imxe1t4v"]
+[gd_scene load_steps=5 format=3 uid="uid://dmx61imxe1t4v"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_4o028"]
 
@@ -9,6 +9,10 @@ albedo_color = Color(1, 0, 0, 1)
 material = SubResource("StandardMaterial3D_5k4bs")
 size = Vector2(20, 1)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lixrq"]
+height = 6.0
+radius = 3.0
+
 [node name="Player" type="Node3D"]
 script = ExtResource("1_4o028")
 
@@ -18,3 +22,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 [node name="ShootDirectionMesh" type="MeshInstance3D" parent="DirectionPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3, 0)
 mesh = SubResource("PlaneMesh_bnnoh")
+
+[node name="SpawnArea" type="Area3D" parent="."]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+shape = SubResource("CylinderShape3D_lixrq")
+
+[connection signal="body_entered" from="SpawnArea" to="." method="_on_spawn_area_body_entered"]
+[connection signal="body_exited" from="SpawnArea" to="." method="_on_spawn_area_body_exited"]

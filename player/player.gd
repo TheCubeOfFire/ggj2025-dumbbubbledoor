@@ -23,6 +23,9 @@ const BUBBLE: PackedScene = preload("res://bubbles/Bubble.tscn")
 var _default_rotation := PI if flipped else 0.0
 var _current_rotation := 0.0
 
+var _bubble_count_in_spawn := 0
+var _arrow_count_in_spawn := 0
+
 
 @onready var _direction_pivot := $DirectionPivot as Marker3D
 
@@ -35,7 +38,7 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-    if controller_index < 0 && controller_index >= InputManager.get_player_count():
+    if controller_index < 0 || controller_index >= InputManager.get_player_count():
         return
 
     _update_player_rotation()
@@ -55,11 +58,13 @@ func _update_player_rotation() -> void:
 
 func _process_shoot_events() -> void:
     if _is_input_just_pressed(InputManager.InputActionType.SHOOT_BUBBLE):
-        _shoot_projectile(BUBBLE, INITIAL_BUBBLE_IMPULSE, _bubble_container_node)
+        if _bubble_count_in_spawn == 0:
+            _shoot_projectile(BUBBLE, INITIAL_BUBBLE_IMPULSE, _bubble_container_node)
 
 
     if _is_input_just_pressed(InputManager.InputActionType.SHOOT_ARROW):
-        _shoot_projectile(ARROW, INITIAL_ARROW_IMPULSE, _arrow_container_node)
+        if _arrow_count_in_spawn == 0:
+            _shoot_projectile(ARROW, INITIAL_ARROW_IMPULSE, _arrow_container_node)
 
 
 func _shoot_projectile(projectile_scene: PackedScene, initial_impulse: float, projectile_container: Node3D) -> void:
@@ -74,3 +79,21 @@ func _shoot_projectile(projectile_scene: PackedScene, initial_impulse: float, pr
 
 func _is_input_just_pressed(input_type: InputManager.InputActionType) -> bool:
     return InputManager.is_action_just_pressed_for_player(controller_index, input_type)
+
+
+func _is_spawn_occupied() -> bool:
+    return false
+
+
+func _on_spawn_area_body_entered(body: Node3D) -> void:
+    if is_instance_of(body, Bubble):
+        _bubble_count_in_spawn += 1
+    elif is_instance_of(body, Arrow):
+        _arrow_count_in_spawn += 1
+
+
+func _on_spawn_area_body_exited(body: Node3D) -> void:
+    if is_instance_of(body, Bubble):
+        _bubble_count_in_spawn -= 1
+    elif is_instance_of(body, Arrow):
+        _arrow_count_in_spawn -= 1
