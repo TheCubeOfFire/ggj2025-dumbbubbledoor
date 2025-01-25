@@ -16,6 +16,8 @@ const BUBBLE: PackedScene = preload("res://bubbles/Bubble.tscn")
 @export_range(0, 10000, 0.1, "suffix:deg/s") var angular_speed := 80
 @export_range(0, TAU, 1, "radians_as_degrees") var angle_limit := deg_to_rad(80)
 
+@export_range(0, 100, 0.01, "suffix:s") var arrow_cooldown := 2.0
+
 @export_node_path("Node3D") var bubble_container_node_path := ^""
 @export_node_path("Node3D") var arrow_container_node_path := ^""
 
@@ -25,6 +27,8 @@ var _current_rotation := 0.0
 
 var _bubble_count_in_spawn := 0
 var _arrow_count_in_spawn := 0
+
+var _current_cooldown := 0.0
 
 
 @onready var _direction_pivot := $DirectionPivot as Marker3D
@@ -37,9 +41,12 @@ func _ready() -> void:
     _direction_pivot.rotation.y = _default_rotation
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
     if controller_index < 0 || controller_index >= InputManager.get_player_count():
         return
+
+    if _current_cooldown > 0.0:
+        _current_cooldown -= delta
 
     _update_player_rotation()
     _process_shoot_events()
@@ -63,7 +70,8 @@ func _process_shoot_events() -> void:
 
 
     if _is_input_just_pressed(InputManager.InputActionType.SHOOT_ARROW):
-        if _arrow_count_in_spawn == 0:
+        if _arrow_count_in_spawn == 0 and _current_cooldown <= 0.0:
+            _current_cooldown = arrow_cooldown
             _shoot_projectile(ARROW, INITIAL_ARROW_IMPULSE, _arrow_container_node)
 
 
