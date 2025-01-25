@@ -70,12 +70,11 @@ func _update_player_rotation() -> void:
 
 func _process_shoot_events() -> void:
     if _is_input_just_pressed(InputManager.InputActionType.SHOOT_BUBBLE):
-        if _bubble_count_in_spawn == 0:
-            _shoot_projectile(BUBBLE, INITIAL_BUBBLE_IMPULSE, _bubble_container_node)
+        _shoot_projectile(BUBBLE, INITIAL_BUBBLE_IMPULSE, _bubble_container_node)
 
 
     if _is_input_just_pressed(InputManager.InputActionType.SHOOT_ARROW):
-        if _arrow_count_in_spawn == 0 and _current_cooldown <= 0.0:
+        if _current_cooldown <= 0.0:
             _current_cooldown = arrow_cooldown
             _shoot_projectile(ARROW, INITIAL_ARROW_IMPULSE, _arrow_container_node)
 
