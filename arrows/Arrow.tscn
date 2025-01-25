@@ -14,9 +14,7 @@ axis_lock_angular_z = true
 physics_material_override = ExtResource("1_ybeqq")
 continuous_cd = true
 script = ExtResource("1_3akqt")
-initial_force = 10.0
 max_speed = 50.0
-initial_direction = Vector3(0, 0, -1)
 bubble_force_multiplier = 5.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

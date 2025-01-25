@@ -69,9 +69,8 @@ func _process_shoot_events() -> void:
 
 func _shoot_projectile(projectile_scene: PackedScene, initial_impulse: float, projectile_container: Node3D) -> void:
     var new_projectile := projectile_scene.instantiate()
-    if "initial_force" in new_projectile:
+    if is_instance_of(new_projectile, GeneralRigidbody):
         new_projectile.initial_force = initial_impulse
-    if "initial_direction" in new_projectile:
         new_projectile.initial_direction = _direction_pivot.global_transform.basis.x
     projectile_container.add_child(new_projectile)
     new_projectile.global_position = _direction_pivot.global_position
