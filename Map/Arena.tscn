@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqibguwxjj4k8"]
+[gd_scene load_steps=6 format=3 uid="uid://cqibguwxjj4k8"]
 
+[ext_resource type="Script" path="res://Map/arena.gd" id="1_21lse"]
 [ext_resource type="PackedScene" uid="uid://6qqli7csrfdu" path="res://Goals/goal.tscn" id="1_orbya"]
 [ext_resource type="Material" uid="uid://drcwsv8agou3e" path="res://Map/FloorMaterial.tres" id="1_y3b3u"]
 [ext_resource type="Material" uid="uid://cshjkxucqox8d" path="res://Map/WallMaterial.tres" id="2_yc8p0"]
+[ext_resource type="PackedScene" uid="uid://dmx61imxe1t4v" path="res://player/player.tscn" id="4_ntw2r"]
 
 [node name="Map" type="Node3D"]
+script = ExtResource("1_21lse")
 
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 60, 0, 0, 0)
@@ -71,3 +74,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.9302, 5.4, 1.25167)
 
 [node name="Goal2" parent="Goals" instance=ExtResource("1_orbya")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.2605, 5.4, -2.71724)
+
+[node name="Players" type="Node3D" parent="."]
+
+[node name="LeftPlayer" parent="Players" instance=ExtResource("4_ntw2r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 0)
+
+[node name="RightPlayer" parent="Players" instance=ExtResource("4_ntw2r")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 39, 0, 0)
+flipped = true
