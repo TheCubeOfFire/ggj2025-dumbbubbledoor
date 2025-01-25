@@ -21,7 +21,5 @@ func bounce_on_bubble(force: Vector3):
     angular_velocity = Vector3.ZERO
     linear_velocity = speed * force
 
-func push_from_bubble(force: Vector3):
-    linear_velocity = Vector3.ZERO
-    angular_velocity = Vector3.ZERO
-    apply_central_impulse(bubble_force_multiplier * force)
+func push_from_bubble(force: Vector3, explosion_point: Vector3):
+    apply_central_impulse(bubble_force_multiplier * force / explosion_point.distance_to(self.global_position))

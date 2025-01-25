@@ -15,7 +15,7 @@ physics_material_override = ExtResource("1_ybeqq")
 script = ExtResource("1_3akqt")
 initial_force = 10.0
 initial_direction = Vector3(0, 0, -1)
-bubble_force_multiplier = 100.0
+bubble_force_multiplier = 5.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_40dby")

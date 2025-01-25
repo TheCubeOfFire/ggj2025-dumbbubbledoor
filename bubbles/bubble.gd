@@ -35,7 +35,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
         force *= bubble_push_force_multiplier / self.global_position.distance_to(body.global_position)
         body.push(force)
     elif is_instance_of(body, Arrow) && body != _arrow_touched:
-        body.apply_central_impulse(_compute_explosion_direction(body))
+        body.push_from_bubble(_compute_explosion_direction(body), self.global_position)
         
 func _compute_explosion_direction(body: Node3D) -> Vector3:
     var force = Vector3(0,0,0)
