@@ -9,17 +9,29 @@ extends Node3D
 @export_range(0, 2 * PI, 1, "radians_as_degrees") var angle_limit := deg_to_rad(80)
 
 
-func _physics_process(delta: float) -> void:
+var _default_rotation := PI if flipped else 0.0
+var _current_rotation := 0.0
+
+@onready var _direction_pivot := $DirectionPivot as Marker3D
+
+
+func _ready() -> void:
+    _direction_pivot.rotation.y = _default_rotation
+
+
+func _physics_process(_delta: float) -> void:
     if controller_index < 0 && controller_index >= InputManager.get_player_count():
         return
 
+    _update_player_rotation()
+
+
+func _update_player_rotation() -> void:
     var up_action := InputManager.InputActionType.ANGLE_DOWN if flipped else InputManager.InputActionType.ANGLE_UP
     var down_action := InputManager.InputActionType.ANGLE_UP if flipped else InputManager.InputActionType.ANGLE_DOWN
 
     var angle_input := InputManager.get_axis_for_player(controller_index, down_action, up_action)
-    rotation.y += angle_input * deg_to_rad(angular_speed) * delta
+    _current_rotation += angle_input * deg_to_rad(angular_speed) * get_physics_process_delta_time()
+    _current_rotation = clampf(_current_rotation, -angle_limit, angle_limit)
 
-    if flipped:
-        rotation.y = clamp(wrap(rotation.y, 0, 2 * PI), PI - angle_limit, PI + angle_limit)
-    else:
-        rotation.y = clamp(wrap(rotation.y, -PI, PI), -angle_limit, angle_limit)
+    _direction_pivot.rotation.y = _default_rotation + _current_rotation
