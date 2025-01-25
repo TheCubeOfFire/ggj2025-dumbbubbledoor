@@ -2,6 +2,17 @@ class_name Bubble
 
 extends GeneralRigidbody
 
+enum BubbleTypes{
+    Normal,
+    Giant,
+    Frag
+}
+
+const BUBBLE: PackedScene = preload("res://bubbles/Bubble.tscn")
+
+## type of bubble
+@export var bubble_type: BubbleTypes
+
 ## multiplier when an explosion from an other bubble pushes this bubble
 @export var bubble_push_force_multiplier: float
 
@@ -10,6 +21,9 @@ extends GeneralRigidbody
 
 ## max bubble lifetime
 @export var max_lifetime: float
+
+@export_group("Bonuses")
+@export var giant_multiplier: float
 
 @onready var _explosion_area_collision: CollisionShape3D = $ExplosionArea/CollisionShape3D
 
@@ -30,6 +44,8 @@ func _ready() -> void:
     super()
     _lifetime_timer.wait_time = randf_range(min_lifetime, max_lifetime)
     _lifetime_timer.start()
+    if bubble_type == BubbleTypes.Frag:
+        print("ok")
 
 
 func _on_body_entered(body: Node) -> void:
@@ -45,6 +61,8 @@ func _explode():
         _exploded = true
         _bubble_collision.set_deferred("disabled",true)
         audio_player.play(0.5)
+        if bubble_type == BubbleTypes.Frag:
+            _frag_effect()
         var _timer = get_tree().create_timer(0.1)
         await _timer.timeout
         _bubble_collision.set_deferred("disabled",false)
@@ -57,9 +75,14 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
     if is_instance_of(body, Bubble) && body != self:
         var force = _compute_explosion_direction(body)
         force *= bubble_push_force_multiplier / self.global_position.distance_to(body.global_position)
+        if bubble_type == BubbleTypes.Giant:
+            force *= giant_multiplier
         body.push(force)
     elif is_instance_of(body, Arrow):
-        body.push_from_bubble(_compute_explosion_direction(body), self.global_position)
+        var force = _compute_explosion_direction(body)
+        if bubble_type == BubbleTypes.Giant:
+            force *= giant_multiplier
+        body.push_from_bubble(force, self.global_position)
 
 func _compute_explosion_direction(body: Node3D) -> Vector3:
     var force = Vector3(0,0,0)
@@ -80,3 +103,12 @@ func _disappear():
 
 func _on_lifetime_timer_timeout() -> void:
     _explode()
+
+
+func _frag_effect():
+    for i in 3:
+        var new_projectile := BUBBLE.instantiate()
+        if is_instance_of(new_projectile, Bubble):
+            new_projectile.bubble_type = BubbleTypes.Normal
+            self.get_parent_node_3d().add_child(new_projectile)
+            new_projectile.global_position = self.global_position 

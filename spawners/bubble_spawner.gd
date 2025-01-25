@@ -49,9 +49,11 @@ func _gen_random_angle():
 
 func _on_timer_timeout() -> void:
     var new_projectile := BUBBLE.instantiate()
-    if is_instance_of(new_projectile, GeneralRigidbody):
+    if is_instance_of(new_projectile, Bubble):
         new_projectile.initial_force = randf_range(min_force, max_force)
         new_projectile.initial_direction = _gen_random_angle()
+        var type = randf_range(0, Bubble.BubbleTypes.size())
+        new_projectile.bubble_type = type
     _bubble_container_node.add_child(new_projectile)
     new_projectile.global_position = _gen_random_pos()
     _reset_timer()
