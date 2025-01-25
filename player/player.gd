@@ -81,10 +81,6 @@ func _is_input_just_pressed(input_type: InputManager.InputActionType) -> bool:
     return InputManager.is_action_just_pressed_for_player(controller_index, input_type)
 
 
-func _is_spawn_occupied() -> bool:
-    return false
-
-
 func _on_spawn_area_body_entered(body: Node3D) -> void:
     if is_instance_of(body, Bubble):
         _bubble_count_in_spawn += 1
