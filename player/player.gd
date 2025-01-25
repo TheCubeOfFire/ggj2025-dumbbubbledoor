@@ -13,8 +13,8 @@ const BUBBLE: PackedScene = preload("res://bubbles/Bubble.tscn")
 @export var controller_index := -1
 @export var flipped := false
 
-@export_range(0, 100, 0.1, "suffix:deg/s") var angular_speed := 80
-@export_range(0, 2 * PI, 1, "radians_as_degrees") var angle_limit := deg_to_rad(80)
+@export_range(0, 10000, 0.1, "suffix:deg/s") var angular_speed := 80
+@export_range(0, TAU, 1, "radians_as_degrees") var angle_limit := deg_to_rad(80)
 
 @export_node_path("Node3D") var bubble_container_node_path := ^""
 @export_node_path("Node3D") var arrow_container_node_path := ^""
