@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dayly4pvdvtsb"]
+
+[ext_resource type="Script" path="res://obstacles/bouncer.gd" id="1_txlr6"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tmb76"]
+radius = 0.749933
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1ne6c"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ax2h1"]
+radius = 0.851998
+
+[node name="Bouncer" type="StaticBody3D"]
+script = ExtResource("1_txlr6")
+bounce_force = 7.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_tmb76")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("CylinderMesh_1ne6c")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_ax2h1")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqibguwxjj4k8"]
+[gd_scene load_steps=9 format=3 uid="uid://cqibguwxjj4k8"]
 
 [ext_resource type="Script" path="res://Map/arena.gd" id="1_21lse"]
 [ext_resource type="PackedScene" uid="uid://6qqli7csrfdu" path="res://Goals/goal.tscn" id="1_orbya"]
@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://cshjkxucqox8d" path="res://Map/WallMaterial.tres" id="2_yc8p0"]
 [ext_resource type="PackedScene" uid="uid://dvt7nvfj6o5td" path="res://game_manager/game_manager.tscn" id="3_7oehc"]
 [ext_resource type="PackedScene" uid="uid://dmx61imxe1t4v" path="res://player/player.tscn" id="4_ntw2r"]
+[ext_resource type="PackedScene" uid="uid://dayly4pvdvtsb" path="res://obstacles/bouncer.tscn" id="8_tl4ky"]
 
 [node name="Map" type="Node3D"]
 script = ExtResource("1_21lse")
@@ -105,3 +106,9 @@ arrow_container_node_path = NodePath("../../Arrows")
 [node name="Arrows" type="Node3D" parent="."]
 
 [node name="Obstacles" type="Node3D" parent="."]
+
+[node name="Bouncer" parent="Obstacles" instance=ExtResource("8_tl4ky")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 13.2981, 1.52962, 13.3908)
+
+[node name="Bouncer2" parent="Obstacles" instance=ExtResource("8_tl4ky")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -11.6635, 1.52962, -12.2495)
