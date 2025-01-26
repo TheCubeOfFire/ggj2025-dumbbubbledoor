@@ -1,9 +1,9 @@
-[gd_scene load_steps=35 format=3 uid="uid://cf7y1avv2tj14"]
+[gd_scene load_steps=32 format=3 uid="uid://cf7y1avv2tj14"]
 
 [ext_resource type="Script" path="res://menus/main_menu/main_menu.gd" id="1_3eji4"]
 [ext_resource type="Shader" path="res://menus/main_menu/main_menu.gdshader" id="1_udch3"]
 [ext_resource type="PackedScene" uid="uid://bltmj0yrnhuj7" path="res://menus/player_selection/player_selection.tscn" id="2_uim1l"]
-[ext_resource type="Theme" path="res://menus/UITheme.theme" id="3_oryuj"]
+[ext_resource type="Theme" uid="uid://bl4qn56jl0byb" path="res://menus/UITheme.theme" id="3_oryuj"]
 [ext_resource type="Shader" path="res://menus/main_menu/2DUI.gdshader" id="4_cpk31"]
 [ext_resource type="Texture2D" uid="uid://cjk1cmx42mu5c" path="res://UI/OB.png" id="4_i8e83"]
 [ext_resource type="Texture2D" uid="uid://de5da13hyg3ih" path="res://UI/OR.png" id="5_vy8vx"]
@@ -18,183 +18,6 @@
 [ext_resource type="ArrayMesh" uid="uid://mkxec8qahn36" path="res://score/1.obj" id="16_8oufj"]
 [ext_resource type="Shader" path="res://bubbles/celshade.gdshader" id="18_0qeav"]
 [ext_resource type="PackedScene" uid="uid://cyae0du7tod4e" path="res://wall/wall.tscn" id="25_yrx0q"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kehri"]
-shader = ExtResource("1_udch3")
-shader_parameter/downscale_value = 1.0
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_6vv2j"]
-viewport_path = NodePath("SubViewportContainer/SubViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8phgh"]
-resource_local_to_scene = true
-shader = ExtResource("1_udch3")
-shader_parameter/downscale_value = 8.0
-shader_parameter/screen_texture = SubResource("ViewportTexture_6vv2j")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_s62gw"]
-viewport_path = NodePath("SubViewportContainer/SubViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iucug"]
-shader = ExtResource("4_cpk31")
-
-[sub_resource type="Animation" id="Animation_1fm7n"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Ob:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-140, -64)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/P1b:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-224, -28)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Node2D/P1b2:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-93, -92)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Node2D/Or:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(138, -44)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Node2D/P2r2:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(200, -57)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Node2D/P2r:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(101, -105)]
-}
-
-[sub_resource type="Animation" id="Animation_40an2"]
-resource_name = "letters_hover"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Ob:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.333333, 1.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-140, -64), Vector2(-140, -96)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/P1b:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-224, -28), Vector2(-223, -58), Vector2(-224, -28)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Node2D/P1b2:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.666667, 1.66667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-93, -92), Vector2(-93, -147)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Node2D/Or:position")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.333333, 1.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(138, -96), Vector2(138, -44)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Node2D/P2r2:position")
-tracks/4/interp = 2
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(200, -57), Vector2(200, -6.99999)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Node2D/P2r:position")
-tracks/5/interp = 2
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.666667, 1.66667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(100.967, -141.17), Vector2(101, -105)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_k8q5n"]
-_data = {
-"RESET": SubResource("Animation_1fm7n"),
-"letters_hover": SubResource("Animation_40an2")
-}
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_3i6oj"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
@@ -237,6 +60,170 @@ material = SubResource("ShaderMaterial_igo5e")
 uv2_padding = 0.0
 size = Vector2(200, 200)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_r6c3p"]
+viewport_path = NodePath("TitleSubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iucug"]
+shader = ExtResource("4_cpk31")
+
+[sub_resource type="Animation" id="Animation_1fm7n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../TitleSubViewport/Node2D/Ob:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-140, -64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../TitleSubViewport/Node2D/P1b:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-224, -28)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../TitleSubViewport/Node2D/P1b2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-93, -92)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../TitleSubViewport/Node2D/Or:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(138, -44)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../TitleSubViewport/Node2D/P2r2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(200, -57)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../TitleSubViewport/Node2D/P2r:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(101, -105)]
+}
+
+[sub_resource type="Animation" id="Animation_40an2"]
+resource_name = "letters_hover"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../TitleSubViewport/Node2D/Ob:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.333333, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-140, -64), Vector2(-140, -96)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../TitleSubViewport/Node2D/P1b:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-224, -28), Vector2(-223, -58), Vector2(-224, -28)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../TitleSubViewport/Node2D/P1b2:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.666667, 1.66667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-93, -92), Vector2(-93, -147)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../TitleSubViewport/Node2D/Or:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.333333, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(138, -96), Vector2(138, -44)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../TitleSubViewport/Node2D/P2r2:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(200, -57), Vector2(200, -6.99999)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../TitleSubViewport/Node2D/P2r:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.666667, 1.66667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(100.967, -141.17), Vector2(101, -105)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k8q5n"]
+_data = {
+"RESET": SubResource("Animation_1fm7n"),
+"letters_hover": SubResource("Animation_40an2")
+}
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -246,161 +233,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3eji4")
 play_scene = ExtResource("2_uim1l")
-
-[node name="PlayButton" type="Button" parent="."]
-unique_name_in_owner = true
-z_index = 4
-z_as_relative = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -189.0
-offset_top = 78.0
-offset_right = -7.0
-offset_bottom = 260.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_oryuj")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("6_0yj7y")
-theme_override_font_sizes/font_size = 128
-text = "Play"
-
-[node name="CreditsButton" type="Button" parent="."]
-unique_name_in_owner = true
-z_index = 4
-z_as_relative = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 108.0
-offset_top = 191.0
-offset_right = 292.0
-offset_bottom = 375.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_oryuj")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("6_0yj7y")
-theme_override_font_sizes/font_size = 98
-text = "Credits"
-
-[node name="QuitButton" type="Button" parent="."]
-unique_name_in_owner = true
-z_index = 4
-z_as_relative = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -77.0
-offset_top = 317.0
-offset_right = 107.0
-offset_bottom = 501.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_oryuj")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("6_0yj7y")
-theme_override_font_sizes/font_size = 128
-text = "Quit"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-show_behind_parent = true
-material = SubResource("ShaderMaterial_kehri")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
-material = SubResource("ShaderMaterial_8phgh")
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
-mouse_filter = 2
-texture = SubResource("ViewportTexture_s62gw")
-stretch_mode = 3
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Node2D" type="Node2D" parent="Control"]
-position = Vector2(0, 64.925)
-scale = Vector2(2.585, 2.585)
-
-[node name="Ob" type="Sprite2D" parent="Control/Node2D"]
-z_index = 1
-texture_filter = 1
-material = SubResource("ShaderMaterial_iucug")
-position = Vector2(-140, -64)
-scale = Vector2(5, 5)
-texture = ExtResource("4_i8e83")
-
-[node name="P1b" type="Sprite2D" parent="Control/Node2D"]
-z_index = 2
-texture_filter = 1
-material = SubResource("ShaderMaterial_iucug")
-position = Vector2(-224, -28)
-scale = Vector2(5, 5)
-texture = ExtResource("6_mxww8")
-
-[node name="P1b2" type="Sprite2D" parent="Control/Node2D"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_iucug")
-position = Vector2(-93, -92)
-scale = Vector2(5, 5)
-texture = ExtResource("6_mxww8")
-
-[node name="Or" type="Sprite2D" parent="Control/Node2D"]
-z_index = 1
-texture_filter = 1
-material = SubResource("ShaderMaterial_iucug")
-position = Vector2(138, -44)
-scale = Vector2(5, 5)
-texture = ExtResource("5_vy8vx")
-
-[node name="P2r" type="Sprite2D" parent="Control/Node2D"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_iucug")
-position = Vector2(101, -105)
-scale = Vector2(5, 5)
-texture = ExtResource("9_qcqka")
-
-[node name="P2r2" type="Sprite2D" parent="Control/Node2D"]
-z_index = 2
-texture_filter = 1
-material = SubResource("ShaderMaterial_iucug")
-position = Vector2(200, -57)
-scale = Vector2(5, 5)
-texture = ExtResource("9_qcqka")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Node2D"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_k8q5n")
-}
-autoplay = "letters_hover"
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 z_index = -1
@@ -596,6 +428,160 @@ transform = Transform3D(-0.724847, 0.537482, 0.977041, 1.0259, 0.778165, 0.33301
 [node name="Node3D4" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
 transform = Transform3D(-0.292112, 0.816613, -1.00832, 1.0259, 0.778165, 0.333013, 0.794424, -0.704629, -0.800805, 29.114, 0, -11.5009)
 
-[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.138778
+anchor_top = 0.145
+anchor_right = 0.899778
+anchor_bottom = 0.694
+offset_left = -127.872
+offset_top = -147.96
+offset_right = 147.456
+offset_bottom = 144.288
+grow_horizontal = 2
+texture = SubResource("ViewportTexture_r6c3p")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Buttons" type="Control" parent="."]
+layout_mode = 1
+anchor_top = 0.476852
+anchor_right = 1.0
+anchor_bottom = 0.925852
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayButton" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+z_index = 4
+z_as_relative = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.372
+anchor_top = 0.12
+anchor_right = 0.47
+anchor_bottom = 0.491
+offset_left = 0.455994
+offset_top = 0.0377693
+offset_right = 7.55994
+offset_bottom = 12.0946
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_oryuj")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_0yj7y")
+theme_override_font_sizes/font_size = 96
+text = "Play"
+metadata/_edit_use_anchors_ = true
+
+[node name="CreditsButton" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+z_index = 4
+z_as_relative = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.554
+anchor_top = 0.323
+anchor_right = 0.658
+anchor_bottom = 0.735
+offset_left = -0.208008
+offset_top = -0.0255051
+offset_right = -0.0160522
+offset_bottom = 0.10228
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_oryuj")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_0yj7y")
+theme_override_font_sizes/font_size = 60
+text = "Credits"
+
+[node name="QuitButton" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+z_index = 4
+z_as_relative = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.444
+anchor_top = 0.588
+anchor_right = 0.548
+anchor_bottom = 1.0
+offset_left = -0.488037
+offset_top = -0.127777
+offset_right = -0.296021
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_oryuj")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_0yj7y")
+theme_override_font_sizes/font_size = 96
+text = "Quit"
+
+[node name="TitleSubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1152, 800)
+
+[node name="Node2D" type="Node2D" parent="TitleSubViewport"]
+position = Vector2(568, 500)
+scale = Vector2(2, 2)
+
+[node name="Ob" type="Sprite2D" parent="TitleSubViewport/Node2D"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_iucug")
+position = Vector2(-140, -64)
+scale = Vector2(5, 5)
+texture = ExtResource("4_i8e83")
+
+[node name="P1b" type="Sprite2D" parent="TitleSubViewport/Node2D"]
+z_index = 2
+texture_filter = 1
+material = SubResource("ShaderMaterial_iucug")
+position = Vector2(-224, -28)
+scale = Vector2(5, 5)
+texture = ExtResource("6_mxww8")
+
+[node name="P1b2" type="Sprite2D" parent="TitleSubViewport/Node2D"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_iucug")
+position = Vector2(-93, -92)
+scale = Vector2(5, 5)
+texture = ExtResource("6_mxww8")
+
+[node name="Or" type="Sprite2D" parent="TitleSubViewport/Node2D"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_iucug")
+position = Vector2(138, -44)
+scale = Vector2(5, 5)
+texture = ExtResource("5_vy8vx")
+
+[node name="P2r" type="Sprite2D" parent="TitleSubViewport/Node2D"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_iucug")
+position = Vector2(101, -105)
+scale = Vector2(5, 5)
+texture = ExtResource("9_qcqka")
+
+[node name="P2r2" type="Sprite2D" parent="TitleSubViewport/Node2D"]
+z_index = 2
+texture_filter = 1
+material = SubResource("ShaderMaterial_iucug")
+position = Vector2(200, -57)
+scale = Vector2(5, 5)
+texture = ExtResource("9_qcqka")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TitleSubViewport/Node2D"]
+root_node = NodePath("../../../Buttons")
+libraries = {
+"": SubResource("AnimationLibrary_k8q5n")
+}
+autoplay = "letters_hover"
+
+[connection signal="pressed" from="Buttons/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Buttons/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="Buttons/QuitButton" to="." method="_on_quit_button_pressed"]

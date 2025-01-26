@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://menus/victory_screen/victory_screen.gd" id="1_oau4s"]
 [ext_resource type="FontFile" uid="uid://bdoh2qdqra3ri" path="res://UI/pansyhand.ttf" id="2_lqw6j"]
 [ext_resource type="LabelSettings" uid="uid://1alty3t2ndgn" path="res://menus/victory_screen/player_label_settings.tres" id="2_qde0g"]
-[ext_resource type="Theme" path="res://menus/UITheme.theme" id="2_wvc0m"]
+[ext_resource type="Theme" uid="uid://bl4qn56jl0byb" path="res://menus/UITheme.theme" id="2_wvc0m"]
 [ext_resource type="Shader" path="res://menus/main_menu/main_menu.gdshader" id="6_3u5hi"]
 [ext_resource type="Shader" path="res://player/pseudoDepthShader.gdshader" id="7_lv0w6"]
 [ext_resource type="ArrayMesh" uid="uid://2rt6yprvfsfu" path="res://UI/P.obj" id="8_fv207"]
