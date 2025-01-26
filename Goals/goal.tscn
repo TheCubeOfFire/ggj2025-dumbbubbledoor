@@ -1,13 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://6qqli7csrfdu"]
+[gd_scene load_steps=7 format=3 uid="uid://6qqli7csrfdu"]
 
 [ext_resource type="Script" path="res://Goals/goal.gd" id="1_mktck"]
 [ext_resource type="AudioStream" uid="uid://beqv51bo8ul1q" path="res://sounds/files/but.mp3" id="2_f3nld"]
+[ext_resource type="Texture2D" uid="uid://oylmkdx24ycl" path="res://Goals/goal.png" id="3_fx04k"]
+[ext_resource type="ArrayMesh" uid="uid://dgp1tnwa662ci" path="res://Goals/goal.obj" id="3_n3foh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_77562"]
 size = Vector3(7, 28.5254, 32.6724)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1r5ft"]
+transparency = 1
+albedo_texture = ExtResource("3_fx04k")
+texture_filter = 0
+
 [node name="Goal1" type="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 409.786, 48.8303, -12.4929)
 script = ExtResource("1_mktck")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -16,6 +22,11 @@ shape = SubResource("BoxShape3D_77562")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_f3nld")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(7.36, 0, 0, 0, 7.36, 0, 0, 0, 7.36, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_1r5ft")
+mesh = ExtResource("3_n3foh")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
