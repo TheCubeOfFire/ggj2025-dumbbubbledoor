@@ -27,7 +27,11 @@ uvec2 pcg2d(uvec2 v)
 
 void fragment() {
 
+<<<<<<< HEAD
     float rotation = mod(TIME,360.0);
+=======
+    float rotation = mod(TIME,360.0); 
+>>>>>>> 8a32378 (made game look good?)
     vec2 pixellatedUV = SCREEN_UV * VIEWPORT_SIZE - mod(SCREEN_UV * VIEWPORT_SIZE, DOWNSCALER);
     pixellatedUV /= VIEWPORT_SIZE / 20.0;
     mat3 rotZ = mat3(vec3(cos(rotation),-sin(rotation),0.0), vec3(sin(rotation),cos(rotation),0.0), vec3(0.0,0.0,1.0));
@@ -44,11 +48,19 @@ void fragment() {
 
     vec3 outColor = rotZ * vec3(r,g,b);
 	outColor = floor(outColor * 2.0)/2.0;
+<<<<<<< HEAD
 
     vec2 center = VIEWPORT_SIZE / 2.0;
     ALBEDO = 0.5 * normalize(0.25 * (4.0 - (vec3(distance(center/ VIEWPORT_SIZE, SCREEN_UV)))) * normalize(0.5 * outColor + vec3(0.95)));
     ALBEDO += 3.0 * vec3(1.0,-0.5,-0.5) * (UV.x - 0.5);
 
+=======
+	
+    vec2 center = VIEWPORT_SIZE / 2.0;
+    ALBEDO = 0.5 * normalize(0.25 * (4.0 - (vec3(distance(center/ VIEWPORT_SIZE, SCREEN_UV)))) * normalize(0.5 * outColor + vec3(0.95)));
+    ALBEDO += 3.0 * vec3(1.0,-0.5,-0.5) * (UV.x - 0.5);
+    
+>>>>>>> 8a32378 (made game look good?)
 	// Called for every pixel the materias visible on.
 }
 

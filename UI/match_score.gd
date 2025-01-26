@@ -3,6 +3,10 @@ extends Control
 @onready var _score_0: Label = $Score0
 @onready var _score_1: Label = $Score1
 @onready var game_over_label: Label = $GameOverLabel
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8a32378 (made game look good?)
 @onready var _score_left: Node3D = $"../../ScoreLeft"
 @onready var _score_right: Node3D = $"../../ScoreRight"
 

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=17 format=3 uid="uid://dcn1kgwbe7mb2"]
+=======
+[gd_scene load_steps=17 format=3 uid="uid://ch4gbfrgrgxom"]
+>>>>>>> 8a32378 (made game look good?)
 
 [ext_resource type="Script" path="res://bubbles/bubble.gd" id="1_0x0o0"]
 [ext_resource type="PhysicsMaterial" uid="uid://dmclqapyrmvtu" path="res://bubbles/BubblePhysicsMaterial.tres" id="1_pjam5"]
@@ -29,6 +33,10 @@ shader_parameter/player_color = Vector3(0, 1, 1)
 
 [sub_resource type="Animation" id="Animation_omjll"]
 resource_name = "Pop"
+<<<<<<< HEAD
+=======
+length = 0.25
+>>>>>>> 8a32378 (made game look good?)
 loop_mode = 1
 tracks/0/type = "scale_3d"
 tracks/0/imported = false
@@ -61,6 +69,7 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
+<<<<<<< HEAD
 tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
@@ -84,6 +93,8 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+=======
+>>>>>>> 8a32378 (made game look good?)
 
 [sub_resource type="Animation" id="Animation_p8dr6"]
 length = 0.001
@@ -111,6 +122,7 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0]
 }
+<<<<<<< HEAD
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
@@ -123,6 +135,8 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+=======
+>>>>>>> 8a32378 (made game look good?)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5122t"]
 _data = {
@@ -198,9 +212,12 @@ trail_lifetime = 0.4
 process_material = SubResource("ParticleProcessMaterial_l6f1n")
 draw_pass_1 = SubResource("QuadMesh_old65")
 
+<<<<<<< HEAD
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 volume_db = 11.097
 
+=======
+>>>>>>> 8a32378 (made game look good?)
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="ExplosionArea" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="LifetimeTimer" to="." method="_on_lifetime_timer_timeout"]
