@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dy36h1gib1omn"
+path="res://.godot/imported/Bumper.obj-b2e054f3717345e527d9a91de5b4c743.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Bumper.obj-b2e054f3717345e527d9a91de5b4c743.mesh"]
+
+source_file="res://obstacles/Bumper.obj"
+dest_files=["res://.godot/imported/Bumper.obj-b2e054f3717345e527d9a91de5b4c743.mesh", "res://.godot/imported/Bumper.obj-b2e054f3717345e527d9a91de5b4c743.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

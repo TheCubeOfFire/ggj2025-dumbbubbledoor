@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://cyae0du7tod4e"]
+
+[ext_resource type="ArrayMesh" uid="uid://u3xpnvqjuvsy" path="res://wall/cloud.obj" id="1_0nxj5"]
+[ext_resource type="Shader" path="res://bubbles/celshade.gdshader" id="2_ba274"]
+[ext_resource type="Shader" path="res://wall/wall.gdshader" id="2_jgo5r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l8qtu"]
+render_priority = 0
+shader = ExtResource("2_ba274")
+shader_parameter/player_color = Vector3(1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ayfbo"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_l8qtu")
+shader = ExtResource("2_jgo5r")
+shader_parameter/player_color = Vector3(1, 1, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.76693, 0, -0.343456, 0, 1.8, 0, 0.343456, 0, 1.76693, 0, -1.11, 0)
+mesh = ExtResource("1_0nxj5")
+surface_material_override/0 = SubResource("ShaderMaterial_ayfbo")

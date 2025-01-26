@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3upa13kn5sco"]
+
+[ext_resource type="Texture2D" uid="uid://dtbl4r3rx1ycr" path="res://UI/ace.png" id="1_qengn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cinsn"]
+shading_mode = 0
+albedo_texture = ExtResource("1_qengn")
+texture_filter = 0
+shadow_to_opacity = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_vr3e5"]
+material = SubResource("StandardMaterial3D_cinsn")
+orientation = 1
+
+[sub_resource type="Animation" id="Animation_2iows"]
+resource_name = "Background"
+length = 20.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p8g5q"]
+_data = {
+"Background": SubResource("Animation_2iows")
+}
+
+[node name="Decor" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_vr3e5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_p8g5q")
+}

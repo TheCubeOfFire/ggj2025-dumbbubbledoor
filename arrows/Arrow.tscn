@@ -1,9 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://deivg1e6f3v0q"]
+[gd_scene load_steps=10 format=3 uid="uid://deivg1e6f3v0q"]
 
 [ext_resource type="Script" path="res://arrows/arrow.gd" id="1_3akqt"]
 [ext_resource type="PhysicsMaterial" uid="uid://7tobioa7s627" path="res://arrows/ArrowPhysicsMaterial.tres" id="1_ybeqq"]
+[ext_resource type="Shader" path="res://arrows/arrow.gdshader" id="3_gk05s"]
+[ext_resource type="Shader" path="res://bubbles/celshade.gdshader" id="3_p3se2"]
+[ext_resource type="ArrayMesh" uid="uid://k2tjuntifto4" path="res://arrows/spike.obj" id="4_026oh"]
+[ext_resource type="Texture2D" uid="uid://df20dl1cbvvf2" path="res://arrows/spike.png" id="4_c533k"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_40dby"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_al1c0"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_p3se2")
+shader_parameter/player_color = Vector3(0, 1.25, 1.25)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vn2hw"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_al1c0")
+shader = ExtResource("3_gk05s")
+shader_parameter/screen_texture = ExtResource("4_c533k")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_24pl2"]
 
@@ -18,7 +33,10 @@ max_speed = 50.0
 bubble_force_multiplier = 5.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_40dby")
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_vn2hw")
+mesh = ExtResource("4_026oh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 shape = SubResource("BoxShape3D_24pl2")

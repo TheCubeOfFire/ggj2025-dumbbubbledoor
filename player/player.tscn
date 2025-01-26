@@ -1,14 +1,18 @@
 [gd_scene load_steps=6 format=3 uid="uid://dmx61imxe1t4v"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_4o028"]
-[ext_resource type="AudioStream" uid="uid://35sk5tnh6n4" path="res://sounds/files/launch.mp3" id="2_hinwx"]
+[ext_resource type="Shader" path="res://player/player.gdshader" id="2_lrqx6"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5k4bs"]
-albedo_color = Color(1, 0, 0, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_11m7u"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_lrqx6")
+shader_parameter/player_color = Vector3(1.5, 0.25, 0.75)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_bnnoh"]
-material = SubResource("StandardMaterial3D_5k4bs")
-size = Vector2(20, 1)
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_11m7u")
+size = Vector2(16, 2)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_lixrq"]
 height = 6.0
@@ -22,7 +26,7 @@ angular_speed = 160
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="ShootDirectionMesh" type="MeshInstance3D" parent="DirectionPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3, 0)
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 9, 30, 0)
 mesh = SubResource("PlaneMesh_bnnoh")
 
 [node name="SpawnArea" type="Area3D" parent="."]
@@ -31,9 +35,6 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 shape = SubResource("CylinderShape3D_lixrq")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("2_hinwx")
 
 [connection signal="body_entered" from="SpawnArea" to="." method="_on_spawn_area_body_entered"]
 [connection signal="body_exited" from="SpawnArea" to="." method="_on_spawn_area_body_exited"]

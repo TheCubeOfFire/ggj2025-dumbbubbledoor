@@ -1,15 +1,124 @@
-[gd_scene load_steps=8 format=3 uid="uid://ch4gbfrgrgxom"]
+[gd_scene load_steps=18 format=3 uid="uid://dcn1kgwbe7mb2"]
 
 [ext_resource type="Script" path="res://bubbles/bubble.gd" id="1_0x0o0"]
 [ext_resource type="PhysicsMaterial" uid="uid://dmclqapyrmvtu" path="res://bubbles/BubblePhysicsMaterial.tres" id="1_pjam5"]
-[ext_resource type="Material" uid="uid://dgonxkp0r7gna" path="res://bubbles/BubbleMaterial.tres" id="1_qv1ux"]
-[ext_resource type="AudioStream" uid="uid://mdei22y74stc" path="res://sounds/files/bubble_pop.mp3" id="4_ievb1"]
+[ext_resource type="Shader" path="res://bubbles/celshade.gdshader" id="3_v5ov6"]
+[ext_resource type="Shader" path="res://bubbles/bubble.gdshader" id="4_bwag8"]
+[ext_resource type="Shader" path="res://bubbles/bubblePop.gdshader" id="5_cu1oe"]
+[ext_resource type="AudioStream" uid="uid://mdei22y74stc" path="res://sounds/files/bubble_pop.mp3" id="6_xvxxb"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wiu5i"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_ilyuo"]
+radial_segments = 8
+rings = 5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ybyqs"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_v5ov6")
+shader_parameter/player_color = Vector3(0.75, 1.2, 1.2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1fmm5"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ybyqs")
+shader = ExtResource("4_bwag8")
+shader_parameter/player_color = Vector3(0, 1, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5q6nl"]
+
+[sub_resource type="Animation" id="Animation_omjll"]
+resource_name = "Pop"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = PackedFloat32Array()
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(5, 5, 5), Vector3(10, 10, 10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:transparency")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_p8dr6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(5, 5, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:transparency")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5122t"]
+_data = {
+"Pop": SubResource("Animation_omjll"),
+"RESET": SubResource("Animation_p8dr6")
+}
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l6f1n"]
+lifetime_randomness = 0.24
+particle_flag_rotate_y = true
+angle_min = -334.2
+angle_max = 413.4
+scale_max = 1.2
+turbulence_enabled = true
+turbulence_noise_strength = 0.19
+turbulence_noise_scale = 2.0
+sub_emitter_mode = 1
+sub_emitter_frequency = 5.42
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xvqrk"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("5_cu1oe")
+shader_parameter/player_color = Vector3(0.25, 1.9, 1.9)
+
+[sub_resource type="QuadMesh" id="QuadMesh_old65"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_xvqrk")
+orientation = 1
 
 [node name="Bubble" type="RigidBody3D"]
 axis_lock_linear_y = true
@@ -20,7 +129,6 @@ script = ExtResource("1_0x0o0")
 bubble_push_force_multiplier = 15.0
 min_lifetime = 18.0
 max_lifetime = 23.0
-giant_multiplier = 3.0
 
 [node name="BubbleCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -29,7 +137,7 @@ shape = SubResource("SphereShape3D_wiu5i")
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 mesh = SubResource("SphereMesh_ilyuo")
-surface_material_override/0 = ExtResource("1_qv1ux")
+surface_material_override/0 = SubResource("ShaderMaterial_1fmm5")
 
 [node name="ExplosionArea" type="Area3D" parent="."]
 collision_layer = 0
@@ -42,9 +150,23 @@ disabled = true
 [node name="LifetimeTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Mesh")
+libraries = {
+"": SubResource("AnimationLibrary_5122t")
+}
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+sub_emitter = NodePath(".")
+lifetime = 0.75
+randomness = 0.07
+collision_base_size = 2.33
+trail_lifetime = 0.4
+process_material = SubResource("ParticleProcessMaterial_l6f1n")
+draw_pass_1 = SubResource("QuadMesh_old65")
+
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("4_ievb1")
-volume_db = 15.0
+stream = ExtResource("6_xvxxb")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="ExplosionArea" to="." method="_on_area_3d_body_entered"]

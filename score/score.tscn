@@ -1,0 +1,104 @@
+[gd_scene load_steps=13 format=3 uid="uid://bjwouy0j4deue"]
+
+[ext_resource type="ArrayMesh" uid="uid://bqwlmsn3iaepo" path="res://score/0.obj" id="1_1mnhv"]
+[ext_resource type="Shader" path="res://bubbles/celshade.gdshader" id="2_pgv5w"]
+[ext_resource type="Script" path="res://score/score.gd" id="2_pv48g"]
+[ext_resource type="Shader" path="res://score/score.gdshader" id="4_i83bd"]
+[ext_resource type="ArrayMesh" uid="uid://mkxec8qahn36" path="res://score/1.obj" id="5_61w6g"]
+[ext_resource type="ArrayMesh" uid="uid://bvmk7f5xjk287" path="res://score/2.obj" id="6_eafv0"]
+[ext_resource type="ArrayMesh" uid="uid://dvyvbpuu1jjdt" path="res://score/3.obj" id="7_ms4kp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l5eja"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_pgv5w")
+shader_parameter/player_color = Vector3(0.25, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i5gyw"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_l5eja")
+shader = ExtResource("4_i83bd")
+shader_parameter/player_color = null
+
+[sub_resource type="Animation" id="Animation_2or2x"]
+resource_name = "Idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.23333, 2.4, 3.63333),
+"transitions": PackedFloat32Array(0.307786, 0.615572, 0.707107, 0.90125),
+"update": 0,
+"values": [Vector3(0, 1.14319, 0.20944), Vector3(0, 1.38405, -0.471239), Vector3(0, 1.81689, -0.335103), Vector3(0, 1.73835, 0.155334)]
+}
+
+[sub_resource type="Animation" id="Animation_rijdr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vjjoi"]
+_data = {
+"Idle": SubResource("Animation_2or2x"),
+"RESET": SubResource("Animation_rijdr")
+}
+
+[node name="Score" type="Node3D"]
+transform = Transform3D(0.405631, -0.0862196, 0.909961, 0.207912, 0.978148, 0, -0.890076, 0.189192, 0.414693, 0, 0, 0)
+script = ExtResource("2_pv48g")
+
+[node name="Score" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.413813, -0.0847701, -0.906407, 0.210511, 0.97758, 0.00468078, -0.885689, 0.192746, -0.42238, 0, 0, 0)
+visible = false
+mesh = ExtResource("1_1mnhv")
+skeleton = NodePath("../ScoreLeft")
+surface_material_override/0 = SubResource("ShaderMaterial_i5gyw")
+
+[node name="zero" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
+mesh = ExtResource("1_1mnhv")
+surface_material_override/0 = SubResource("ShaderMaterial_i5gyw")
+
+[node name="one" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, -7.45058e-09, 0, 0, -1, -0.233688, -1.09942, 8.37429e-09)
+visible = false
+mesh = ExtResource("5_61w6g")
+skeleton = NodePath("../zero")
+surface_material_override/0 = SubResource("ShaderMaterial_i5gyw")
+
+[node name="two" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
+visible = false
+mesh = ExtResource("6_eafv0")
+skeleton = NodePath("../zero")
+surface_material_override/0 = SubResource("ShaderMaterial_i5gyw")
+
+[node name="three" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
+visible = false
+mesh = ExtResource("7_ms4kp")
+skeleton = NodePath("../zero")
+surface_material_override/0 = SubResource("ShaderMaterial_i5gyw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_vjjoi")
+}
+autoplay = "Idle"

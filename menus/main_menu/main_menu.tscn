@@ -1,7 +1,241 @@
-[gd_scene load_steps=3 format=3 uid="uid://cf7y1avv2tj14"]
+[gd_scene load_steps=35 format=3 uid="uid://cf7y1avv2tj14"]
 
 [ext_resource type="Script" path="res://menus/main_menu/main_menu.gd" id="1_3eji4"]
+[ext_resource type="Shader" path="res://menus/main_menu/main_menu.gdshader" id="1_udch3"]
 [ext_resource type="PackedScene" uid="uid://bltmj0yrnhuj7" path="res://menus/player_selection/player_selection.tscn" id="2_uim1l"]
+[ext_resource type="Theme" uid="uid://bl4qn56jl0byb" path="res://menus/UITheme.theme" id="3_oryuj"]
+[ext_resource type="Shader" path="res://menus/main_menu/2DUI.gdshader" id="4_cpk31"]
+[ext_resource type="Texture2D" uid="uid://cjk1cmx42mu5c" path="res://UI/OB.png" id="4_i8e83"]
+[ext_resource type="Texture2D" uid="uid://de5da13hyg3ih" path="res://UI/OR.png" id="5_vy8vx"]
+[ext_resource type="FontFile" uid="uid://bdoh2qdqra3ri" path="res://UI/pansyhand.ttf" id="6_0yj7y"]
+[ext_resource type="Texture2D" uid="uid://dmpuvskfvi4xa" path="res://UI/P1B.png" id="6_mxww8"]
+[ext_resource type="Texture2D" uid="uid://ccr0wdrg6uhdw" path="res://UI/P2R.png" id="9_qcqka"]
+[ext_resource type="ArrayMesh" uid="uid://2rt6yprvfsfu" path="res://UI/P.obj" id="11_lfmjl"]
+[ext_resource type="Shader" path="res://player/pseudoDepthShader.gdshader" id="12_bm0pj"]
+[ext_resource type="Shader" path="res://score/score.gdshader" id="13_1up8d"]
+[ext_resource type="Shader" path="res://bubbles/background.gdshader" id="13_d2f6t"]
+[ext_resource type="PackedScene" uid="uid://ch4gbfrgrgxom" path="res://bubbles/Bubble.tscn" id="15_4cj0t"]
+[ext_resource type="ArrayMesh" uid="uid://mkxec8qahn36" path="res://score/1.obj" id="16_8oufj"]
+[ext_resource type="Shader" path="res://bubbles/celshade.gdshader" id="18_0qeav"]
+[ext_resource type="PackedScene" uid="uid://cyae0du7tod4e" path="res://wall/wall.tscn" id="25_yrx0q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kehri"]
+shader = ExtResource("1_udch3")
+shader_parameter/downscale_value = 1.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6vv2j"]
+viewport_path = NodePath("SubViewportContainer/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8phgh"]
+resource_local_to_scene = true
+shader = ExtResource("1_udch3")
+shader_parameter/downscale_value = 8.0
+shader_parameter/screen_texture = SubResource("ViewportTexture_6vv2j")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_s62gw"]
+viewport_path = NodePath("SubViewportContainer/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iucug"]
+shader = ExtResource("4_cpk31")
+
+[sub_resource type="Animation" id="Animation_1fm7n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Ob:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-140, -64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/P1b:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-224, -28)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/P1b2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-93, -92)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/Or:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(138, -44)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D/P2r2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(200, -57)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Node2D/P2r:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(101, -105)]
+}
+
+[sub_resource type="Animation" id="Animation_40an2"]
+resource_name = "letters_hover"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Ob:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.333333, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-140, -64), Vector2(-140, -96)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/P1b:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-224, -28), Vector2(-223, -58), Vector2(-224, -28)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/P1b2:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.666667, 1.66667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-93, -92), Vector2(-93, -147)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/Or:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.333333, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(138, -96), Vector2(138, -44)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D/P2r2:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(200, -57), Vector2(200, -6.99999)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Node2D/P2r:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.666667, 1.66667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(100.967, -141.17), Vector2(101, -105)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k8q5n"]
+_data = {
+"RESET": SubResource("Animation_1fm7n"),
+"letters_hover": SubResource("Animation_40an2")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3i6oj"]
+viewport_path = NodePath("SubViewportContainer/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1vbos"]
+resource_local_to_scene = true
+shader = ExtResource("1_udch3")
+shader_parameter/downscale_value = 4.0
+shader_parameter/screen_texture = SubResource("ViewportTexture_3i6oj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wm2sb"]
+render_priority = 0
+shader = ExtResource("12_bm0pj")
+shader_parameter/downscale_value = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_xnevh"]
+material = SubResource("ShaderMaterial_wm2sb")
+size = Vector2(200, 200)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iep85"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("18_0qeav")
+shader_parameter/player_color = Vector3(2, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dafi1"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_iep85")
+shader = ExtResource("13_1up8d")
+shader_parameter/player_color = Vector3(1, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_igo5e"]
+render_priority = 0
+shader = ExtResource("13_d2f6t")
+
+[sub_resource type="QuadMesh" id="QuadMesh_6s0ao"]
+lightmap_size_hint = Vector2i(1000, 1000)
+material = SubResource("ShaderMaterial_igo5e")
+uv2_padding = 0.0
+size = Vector2(200, 200)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -15,49 +249,350 @@ play_scene = ExtResource("2_uim1l")
 
 [node name="PlayButton" type="Button" parent="."]
 unique_name_in_owner = true
+z_index = 4
+z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.5
-offset_right = 20.5
-offset_bottom = -80.0
+offset_left = -189.0
+offset_top = 78.0
+offset_right = -7.0
+offset_bottom = 260.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_oryuj")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_0yj7y")
+theme_override_font_sizes/font_size = 128
 text = "Play"
 
 [node name="CreditsButton" type="Button" parent="."]
 unique_name_in_owner = true
+z_index = 4
+z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = 108.0
+offset_top = 191.0
+offset_right = 292.0
+offset_bottom = 375.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_oryuj")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_0yj7y")
+theme_override_font_sizes/font_size = 98
 text = "Credits"
 
 [node name="QuitButton" type="Button" parent="."]
 unique_name_in_owner = true
+z_index = 4
+z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.5
-offset_top = 80.0
-offset_right = 20.5
+offset_left = -77.0
+offset_top = 317.0
+offset_right = 107.0
+offset_bottom = 501.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_oryuj")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_0yj7y")
+theme_override_font_sizes/font_size = 128
 text = "Quit"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_kehri")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_8phgh")
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture = SubResource("ViewportTexture_s62gw")
+stretch_mode = 3
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Node2D" type="Node2D" parent="Control"]
+position = Vector2(0, 64.925)
+scale = Vector2(2.585, 2.585)
+
+[node name="Ob" type="Sprite2D" parent="Control/Node2D"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_iucug")
+position = Vector2(-140, -64)
+scale = Vector2(5, 5)
+texture = ExtResource("4_i8e83")
+
+[node name="P1b" type="Sprite2D" parent="Control/Node2D"]
+z_index = 2
+texture_filter = 1
+material = SubResource("ShaderMaterial_iucug")
+position = Vector2(-224, -28)
+scale = Vector2(5, 5)
+texture = ExtResource("6_mxww8")
+
+[node name="P1b2" type="Sprite2D" parent="Control/Node2D"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_iucug")
+position = Vector2(-93, -92)
+scale = Vector2(5, 5)
+texture = ExtResource("6_mxww8")
+
+[node name="Or" type="Sprite2D" parent="Control/Node2D"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_iucug")
+position = Vector2(138, -44)
+scale = Vector2(5, 5)
+texture = ExtResource("5_vy8vx")
+
+[node name="P2r" type="Sprite2D" parent="Control/Node2D"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_iucug")
+position = Vector2(101, -105)
+scale = Vector2(5, 5)
+texture = ExtResource("9_qcqka")
+
+[node name="P2r2" type="Sprite2D" parent="Control/Node2D"]
+z_index = 2
+texture_filter = 1
+material = SubResource("ShaderMaterial_iucug")
+position = Vector2(200, -57)
+scale = Vector2(5, 5)
+texture = ExtResource("9_qcqka")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Node2D"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_k8q5n")
+}
+autoplay = "letters_hover"
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_1vbos")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 768.0
+offset_bottom = 432.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+mouse_filter = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="MainCamera" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.0750135, 0.997183, 0, -0.997183, 0.0750135, 0, 50, 4.47568)
+projection = 1
+current = true
+size = 59.346
+near = 2.929
+far = 62.98
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/MainCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.38419e-07, -6.54)
+visible = false
+cast_shadow = 0
+extra_cull_margin = 16384.0
+gi_mode = 0
+visibility_range_end = 4096.0
+visibility_range_end_margin = 4096.0
+visibility_range_fade_mode = 1
+mesh = SubResource("QuadMesh_xnevh")
+
+[node name="Dots" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/MainCamera"]
+transform = Transform3D(-0.038252, 0.0493664, -0.998048, 0.00218856, 0.998782, 0.0493184, 0.999268, -0.000297733, -0.0383134, 7.67026, 9.65626, -33.9608)
+visible = false
+mesh = ExtResource("11_lfmjl")
+surface_material_override/0 = SubResource("ShaderMaterial_dafi1")
+
+[node name="Dots2" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/MainCamera"]
+transform = Transform3D(-0.0780184, 0.726001, -0.683254, 0.048896, 0.687305, 0.724722, 0.995754, 0.0231332, -0.0891208, 16.0908, 4.6619, -33.5851)
+visible = false
+mesh = ExtResource("11_lfmjl")
+surface_material_override/0 = SubResource("ShaderMaterial_dafi1")
+
+[node name="Dots3" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/MainCamera"]
+transform = Transform3D(0.0353292, -0.767682, -0.639857, 0.000729844, 0.640278, -0.768145, 0.999377, 0.0266709, 0.0231806, -17.6455, 4.78059, -33.5942)
+visible = false
+mesh = ExtResource("11_lfmjl")
+surface_material_override/0 = SubResource("ShaderMaterial_dafi1")
+
+[node name="Dots4" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/MainCamera"]
+transform = Transform3D(-0.0219479, -0.162982, -0.986385, -0.00425012, 0.98663, -0.162927, 0.999752, 0.000616372, -0.0223472, -7.91312, 8.99457, -33.9112)
+visible = false
+mesh = ExtResource("11_lfmjl")
+surface_material_override/0 = SubResource("ShaderMaterial_dafi1")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/MainCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5404, -2.02047, -56.3978)
+cast_shadow = 0
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_6s0ao")
+
+[node name="Bubble" parent="SubViewportContainer/SubViewport/MainCamera" instance=ExtResource("15_4cj0t")]
+transform = Transform3D(0.611596, 1.00117e-08, -0.79117, -0.788942, 0.0750135, -0.609874, 0.0593485, 0.997183, 0.045878, 12.2698, 7.99531, -33.5909)
+visible = false
+
+[node name="Bubble2" parent="SubViewportContainer/SubViewport/MainCamera" instance=ExtResource("15_4cj0t")]
+transform = Transform3D(0.487997, 1.86265e-09, 0.872846, 0.870387, 0.0750135, -0.486622, -0.0654752, 0.997183, 0.0366063, -13.1213, 8.18136, -33.6051)
+visible = false
+
+[node name="Dots5" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/MainCamera"]
+transform = Transform3D(-0.0318557, 0.996763, 0.0738379, 0.990438, 0.0414038, -0.131617, -0.134248, 0.0689393, -0.988548, -2.56297, 9.02525, -33.7901)
+visible = false
+mesh = ExtResource("16_8oufj")
+skeleton = NodePath("../Dots2")
+surface_material_override/0 = SubResource("ShaderMaterial_dafi1")
+
+[node name="Node3D" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(-0.993025, 0.220202, 0.856921, 0.696176, 0.989438, 0.552495, -0.546022, 0.861059, -0.854012, 29.9713, 0, 18.3835)
+
+[node name="Node3D24" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(-0.371574, 1.15559, 1.4027, 1.65015, 0.814461, -0.233859, -0.761557, 1.20095, -1.19112, 39.0998, 0, 20.2415)
+
+[node name="Node3D25" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(0.0931566, 0.334477, 1.82222, 1.65015, 0.814461, -0.233859, -0.842234, 1.63273, -0.256639, 2.55106, 0, 31.0914)
+
+[node name="Node3D26" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(0.0931566, 0.334477, 1.82222, 0.248047, 1.80584, -0.344152, -1.83598, 0.260946, 0.0459621, 20.9061, 0, 33.4876)
+
+[node name="Node3D27" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(0.949445, 0.171527, 1.58435, 0.248047, 1.80584, -0.344152, -1.57418, 0.388003, 0.901347, -23.266, 0, 32.122)
+
+[node name="Node3D28" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(0.718486, -0.70481, 1.55822, 0.668395, 1.67144, 0.447831, -1.57418, 0.388003, 0.901347, -43.4318, 0, 16.8354)
+
+[node name="Node3D29" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(1.71796, -0.583525, -0.386187, 0.668395, 1.67144, 0.447831, 0.2071, -0.553897, 1.75822, -41.1195, 0, -9.47279)
+
+[node name="Node3D30" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(0.36875, 0.331467, -1.78751, -0.238198, 1.81699, 0.287797, 1.80231, 0.172321, 0.403759, -21.8059, 0, -24.6653)
+
+[node name="Node3D31" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(-1.08464, 0.0956846, -1.50181, 1.06633, 1.35514, -0.683783, 1.06185, -1.26312, -0.847366, 12.7045, -0.330566, -24.255)
+
+[node name="Node3D32" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(-0.843901, 0.955427, -1.3476, 1.50351, 1.07112, -0.182129, 0.684328, -1.17511, -1.26168, 40.8092, -0.330566, -5.72843)
+
+[node name="Node3D33" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(0.585788, -1.50807, -2.20443, -2.63992, -1.05585, 0.374605, -1.2175, 1.56383, -1.87291, -55.249, -0.000985138, 24.2864)
+
+[node name="Node3D34" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(-0.171121, -0.34238, -2.68623, -2.87172, -0.826348, 0.353277, -1.46599, 1.65869, -0.378478, -6.87556, -0.155957, 38.6466)
+
+[node name="Node3D35" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(-0.149266, -0.527275, -2.52408, -0.393708, -2.79791, 0.484881, -2.91756, 0.404538, 0.0637033, -31.1691, -0.078129, 41.8181)
+
+[node name="Node3D36" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(-1.62633, -0.260974, -1.87518, -0.419462, -2.65926, 0.413466, -2.69427, 0.571542, 1.06753, 27.2941, -0.265425, 40.0107)
+
+[node name="Node3D37" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(-1.29182, 0.850603, -2.14129, -1.19426, -2.03492, -0.608169, -2.82216, 0.471761, 1.23752, 53.9843, -0.350931, 19.7782)
+
+[node name="Node3D38" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(-1.62025, 0.871384, 0.651719, -0.624558, -2.52127, -0.760537, 0.195084, -0.834614, 2.97792, 50.9238, -0.341126, -15.0417)
+
+[node name="Node3D39" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(-0.498006, -0.501522, 2.9602, 0.323901, -2.70134, -0.486097, 2.43899, 0.256339, 0.668983, 25.3616, -0.259234, -35.1496)
+
+[node name="Node3D40" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(2.03293, -0.108978, 1.65333, -2.01115, -1.47769, 0.746543, 1.99637, -1.37765, -0.931535, -20.3126, 0.335743, -34.6065)
+
+[node name="Node3D41" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(0.902058, -1.79998, 1.45515, -1.61896, -2.0053, 0.192039, 0.735587, -2.20614, -1.36181, -57.5101, 0.454911, -10.0859)
+
+[node name="Node3D2" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(0.226989, -0.75703, 1.06971, 1.0259, 0.778165, 0.333013, -0.815423, 0.768287, 0.716744, -29.0627, 0, 18.7509)
+
+[node name="Node3D5" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(-0.206609, 0.086973, 1.31097, 0.74159, 1.10319, 0.0436858, -1.08455, 0.737766, -0.21987, 3.24813, 0, 22.8631)
+
+[node name="Node3D6" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(0.782465, -0.488039, -0.958366, 0.364979, 1.23534, -0.331096, 1.01165, -0.0682045, 0.860703, 18.0441, 0, 25.3941)
+
+[node name="Node3D15" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(0.857444, -0.861014, 0.540688, 0.958748, 0.920142, -0.0551466, -0.338367, 0.425315, 1.21388, -17.1339, 0, 11.3992)
+
+[node name="Node3D7" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(0.782465, -0.488039, -0.958366, 0.912679, -0.325619, 0.910982, -0.568915, -1.1936, 0.143337, -12.9528, 0, 24.8683)
+
+[node name="Node3D8" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(0.266887, 0.731214, -1.07842, 1.2716, 0.0938292, 0.378315, 0.284073, -1.10699, -0.68028, -34.5907, 0, 5.29512)
+
+[node name="Node3D13" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(0.218621, -0.645698, 1.14201, -1.28078, -0.355742, 0.0440494, 0.284073, -1.10699, -0.68028, -19.7602, 0, -1.51901)
+
+[node name="Node3D14" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(0.551918, -0.527596, 1.089, -1.01477, -0.85382, 0.100642, 0.659183, -0.872659, -0.756864, 24.7982, -2.9176, 12.3866)
+
+[node name="Node3D17" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(0.339081, -0.375869, 1.2299, 1.12407, 0.704571, -0.0945801, -0.624811, 1.06358, 0.497301, 19.5773, -2.9176, -6.41521)
+
+[node name="Node3D23" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(0.388174, 0.336639, -0.619693, -0.696995, 0.290896, -0.278571, 0.107439, 0.670878, 0.431745, -14.8639, 1.4303, -1.16357)
+
+[node name="Node3D20" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(-0.38602, 0.189895, -1.2585, 1.25833, 0.254358, -0.347587, 0.191056, -1.29156, -0.253487, 1.93361, -2.9176, -7.75458)
+
+[node name="Node3D9" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(0.382558, -0.0531372, -1.27268, 1.2716, 0.0938292, 0.378315, 0.0746704, -1.32562, 0.077793, -1.02166, 0, -19.189)
+
+[node name="Node3D10" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(0.382558, -0.0531372, -1.27268, 0.743575, -1.06962, 0.268171, -1.03424, -0.788668, -0.277954, 12.5125, 0, -18.1833)
+
+[node name="Node3D11" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(0.353818, 0.537761, 1.16384, -0.554691, -1.02429, 0.641911, 1.15587, -0.656159, -0.0482104, -16.5724, 0, -16.1904)
+
+[node name="Node3D12" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(-0.757531, 0.84493, 0.693641, -0.554691, -1.02429, 0.641911, 0.941999, 0.0763246, 0.935794, 35.2184, 0, 3.03403)
+
+[node name="Node3D3" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(-0.724847, 0.537482, 0.977041, 1.0259, 0.778165, 0.333013, -0.437076, 0.935132, -0.838685, -30.2874, 0, -11.5009)
+
+[node name="Node3D4" parent="SubViewportContainer/SubViewport" instance=ExtResource("25_yrx0q")]
+transform = Transform3D(-0.292112, 0.816613, -1.00832, 1.0259, 0.778165, 0.333013, 0.794424, -0.704629, -0.800805, 29.114, 0, -11.5009)
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]

@@ -1,15 +1,71 @@
-[gd_scene load_steps=6 format=3 uid="uid://dayly4pvdvtsb"]
+[gd_scene load_steps=13 format=3 uid="uid://dayly4pvdvtsb"]
 
 [ext_resource type="Script" path="res://obstacles/bouncer.gd" id="1_txlr6"]
-[ext_resource type="AudioStream" uid="uid://cfvjxibvifpqa" path="res://sounds/files/bouncer.mp3" id="2_gpyt8"]
+[ext_resource type="ArrayMesh" uid="uid://dy36h1gib1omn" path="res://obstacles/Bumper.obj" id="2_vubag"]
+[ext_resource type="Shader" path="res://obstacles/bouncer.gdshader" id="3_4p2k4"]
+[ext_resource type="Shader" path="res://bubbles/celshade.gdshader" id="3_mky7b"]
+[ext_resource type="Texture2D" uid="uid://cw4tam4wmimok" path="res://obstacles/bumper.png" id="4_lil03"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_tmb76"]
 radius = 0.749933
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_1ne6c"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rbe4j"]
+render_priority = 0
+shader = ExtResource("3_mky7b")
+shader_parameter/player_color = Vector3(2, 2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bsdot"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_rbe4j")
+shader = ExtResource("3_4p2k4")
+shader_parameter/screen_texture = ExtResource("4_lil03")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ax2h1"]
 radius = 0.851998
+
+[sub_resource type="Animation" id="Animation_dx81w"]
+resource_name = "Bounce"
+length = 0.2
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array()
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.44, 0.961, 1.44), Vector3(0.695, 0.464, 0.695), Vector3(1.44, 0.961, 1.44), Vector3(1.09, 0.728, 1.09), Vector3(1.44, 0.961, 1.44)]
+}
+
+[sub_resource type="Animation" id="Animation_qmxgs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.44, 0.961, 1.44)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kqhx5"]
+_data = {
+"Bounce": SubResource("Animation_dx81w"),
+"RESET": SubResource("Animation_qmxgs")
+}
 
 [node name="Bouncer" type="StaticBody3D"]
 script = ExtResource("1_txlr6")
@@ -19,16 +75,22 @@ bounce_force = 7.0
 shape = SubResource("CylinderShape3D_tmb76")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 1, 0, 0, 0, 1.5, 0, 0, 0)
-mesh = SubResource("CylinderMesh_1ne6c")
+transform = Transform3D(1.44, 0, 0, 0, 0.961, 0, 0, 0, 1.44, 0, 0, 0)
+mesh = ExtResource("2_vubag")
+surface_material_override/0 = SubResource("ShaderMaterial_bsdot")
 
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 shape = SubResource("CylinderShape3D_ax2h1")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("2_gpyt8")
-volume_db = 10.0
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.04401, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kqhx5")
+}
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
