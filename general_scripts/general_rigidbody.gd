@@ -16,10 +16,6 @@ extends RigidBody3D
 
 ## player shooting the thing
 @export var player: int
-<<<<<<< HEAD
-=======
-
->>>>>>> 8a32378 (made game look good?)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -25,12 +25,9 @@ var _score_1_value: int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	reset_scores()
-<<<<<<< HEAD
 	MusicPlayer.play_music()
 	audio_stream_player.stream = START_JINGLE
 	audio_stream_player.play()
-=======
->>>>>>> 8a32378 (made game look good?)
 
 
 func increase_score(player_id: int):
@@ -57,11 +54,8 @@ func reset_scores():
 
 func victory(winner_id: int):
 	if(!_is_victory_triggered):
-<<<<<<< HEAD
 		audio_stream_player.stream = END_JINGLE
 		audio_stream_player.play()
-=======
->>>>>>> 8a32378 (made game look good?)
 		_is_victory_triggered = true
 		left_player.is_game_over = true
 		right_player.is_game_over = true

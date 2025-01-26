@@ -51,10 +51,6 @@ var _current_cooldown := 0.0
 
 func _ready() -> void:
 	_direction_pivot.rotation.y = _default_rotation
-<<<<<<< HEAD
-=======
-
->>>>>>> 8a32378 (made game look good?)
 
 func get_spawn_pos():
 	return _direction_pivot.global_position

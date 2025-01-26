@@ -32,10 +32,6 @@ void fragment() {
     vec2 outputUV = vec2(ditherval);
 
     ALBEDO = 0.75 * vec3(screenColor * ditherval);
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> 8a32378 (made game look good?)
     ALPHA = floor(ditherval * DEPTH_LEVELS)/DEPTH_LEVELS;
 }

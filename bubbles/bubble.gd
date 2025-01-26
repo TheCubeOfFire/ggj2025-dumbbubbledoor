@@ -41,17 +41,10 @@ var _arrow_touched: Node3D
 
 var _exploded: bool = false
 
-<<<<<<< HEAD
-=======
-@onready var bubble_mesh: MeshInstance3D = $Mesh
-@onready var bubble_pop_anim: AnimationPlayer = $AnimationPlayer
-
->>>>>>> 8a32378 (made game look good?)
 func _ready() -> void:
 	super()
 	_lifetime_timer.wait_time = randf_range(min_lifetime, max_lifetime)
 	_lifetime_timer.start()
-<<<<<<< HEAD
 	if bubble_type == BubbleTypes.Frag:
 		print("ok")
 	if(player == 0):
@@ -59,13 +52,6 @@ func _ready() -> void:
 		celShader.set_shader_parameter("player_color", Vector3(0.25,1.9,1.9))
 	else :
 		var celShader := _mesh.get_active_material(0).next_pass as ShaderMaterial
-=======
-	if(player == 0):
-		var celShader := bubble_mesh.get_active_material(0).next_pass as ShaderMaterial
-		celShader.set_shader_parameter("player_color", Vector3(0.25,1.9,1.9))
-	else :
-		var celShader := bubble_mesh.get_active_material(0).next_pass as ShaderMaterial
->>>>>>> 8a32378 (made game look good?)
 		celShader.set_shader_parameter("player_color", Vector3(1.9,0.25,0.25))
 		var particle_emitter : GPUParticles3D = $GPUParticles3D
 		particle_emitter.draw_pass_1.surface_get_material(0).set_shader_parameter("player_color", Vector3(1.9,0.25,0.25))
@@ -79,7 +65,6 @@ func _on_body_entered(body: Node) -> void:
 	
 func _explode():
 		_explosion_area_collision.set_deferred("disabled",false)
-<<<<<<< HEAD
 		_mesh.visible = false
 		_exploded = true
 		_bubble_collision.set_deferred("disabled",true)
@@ -94,13 +79,6 @@ func _explode():
 		_bubble_collision.set_deferred("disabled",false)
 		var _timer2 = get_tree().create_timer(0.1)
 		await _timer2.timeout
-=======
-		_exploded = true
-		_bubble_collision.set_deferred("disabled",true)
-		bubble_pop_anim.play("Pop");
-		var _timer = get_tree().create_timer(0.25)
-		await _timer.timeout
->>>>>>> 8a32378 (made game look good?)
 		_disappear()
 
 
@@ -108,7 +86,6 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if is_instance_of(body, Bubble) && body != self:
 		var force = _compute_explosion_direction(body)
 		force *= bubble_push_force_multiplier / self.global_position.distance_to(body.global_position)
-<<<<<<< HEAD
 		if bubble_type == BubbleTypes.Giant:
 			force *= giant_multiplier
 		body.push(force)
@@ -117,11 +94,6 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		if bubble_type == BubbleTypes.Giant:
 			force *= giant_multiplier
 		body.push_from_bubble(force, self.global_position)
-=======
-		body.push(force)
-	elif is_instance_of(body, Arrow):
-		body.push_from_bubble(_compute_explosion_direction(body), self.global_position)
->>>>>>> 8a32378 (made game look good?)
 
 func _compute_explosion_direction(body: Node3D) -> Vector3:
 	var force = Vector3(0,0,0)
@@ -142,7 +114,6 @@ func _disappear():
 
 func _on_lifetime_timer_timeout() -> void:
 	_explode()
-<<<<<<< HEAD
 
 func _frag_effect():
 	for i in 3:
@@ -154,9 +125,3 @@ func _frag_effect():
 
 func _process(_delta) -> void:
 	_mesh.rotate_x(1.0*_delta)
-=======
-	
-func _process(_delta) -> void:
-	bubble_mesh.rotate_x(1.0*_delta)
-	
->>>>>>> 8a32378 (made game look good?)

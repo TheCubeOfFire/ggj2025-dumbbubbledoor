@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 [gd_scene load_steps=5 format=3 uid="uid://ckkjtwqex6635"]
-=======
-[gd_scene load_steps=5 format=3 uid="uid://de54etxajl8xh"]
->>>>>>> 8a32378 (made game look good?)
 
 [ext_resource type="ArrayMesh" uid="uid://2rt6yprvfsfu" path="res://UI/P.obj" id="1_kacpu"]
 

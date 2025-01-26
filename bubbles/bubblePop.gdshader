@@ -9,11 +9,7 @@ void fragment() {
 	ALBEDO = vec3(player_color );
     ALBEDO += vec3(1.0) - vec3(abs((mod(0.25 + TIME,2.0) - 1.0))) * (1.0 - dist);
 	ALBEDO *= 2.0;
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> 8a32378 (made game look good?)
 	ALPHA = floor(2.0*(1.0 - distance(vec2(0.5), UV)));
 	// Called for every pixel the material is visible on.
 }
