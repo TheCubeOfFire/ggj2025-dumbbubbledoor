@@ -1,10 +1,9 @@
-[gd_scene load_steps=37 format=3 uid="uid://cqibguwxjj4k8"]
+[gd_scene load_steps=44 format=3 uid="uid://cqibguwxjj4k8"]
 
 [ext_resource type="Script" path="res://Map/arena.gd" id="1_21lse"]
 [ext_resource type="PackedScene" uid="uid://6qqli7csrfdu" path="res://Goals/goal.tscn" id="1_orbya"]
 [ext_resource type="Material" uid="uid://drcwsv8agou3e" path="res://Map/FloorMaterial.tres" id="1_y3b3u"]
 [ext_resource type="Shader" path="res://bubbles/screenSpace.gdshader" id="2_s3ial"]
-[ext_resource type="Material" uid="uid://cshjkxucqox8d" path="res://Map/WallMaterial.tres" id="2_yc8p0"]
 [ext_resource type="PackedScene" uid="uid://dvt7nvfj6o5td" path="res://game_manager/game_manager.tscn" id="3_7oehc"]
 [ext_resource type="PackedScene" uid="uid://dmx61imxe1t4v" path="res://player/player.tscn" id="4_ntw2r"]
 [ext_resource type="Shader" path="res://player/pseudoDepthShader.gdshader" id="5_j5pkt"]
@@ -61,6 +60,30 @@ render_priority = 0
 next_pass = SubResource("ShaderMaterial_c343o")
 shader = ExtResource("11_l0p67")
 shader_parameter/player_color = null
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gxob7"]
+size = Vector3(20.3404, 15.0662, 92.4151)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gt4i6"]
+size = Vector3(23.8301, 15.0662, 88.3082)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u6w8l"]
+size = Vector3(127.319, 15.0662, 22.5134)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lxg16"]
+size = Vector3(127.319, 15.0662, 22.5134)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ik27k"]
+size = Vector3(49.5779, 15.0662, 22.2045)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_em0cj"]
+size = Vector3(49.5779, 15.0662, 20.7029)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dnh7d"]
+size = Vector3(49.5779, 15.0662, 22.2045)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4r5pc"]
+size = Vector3(49.5779, 15.0662, 21.5837)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uk6ew"]
 resource_local_to_scene = true
@@ -213,57 +236,54 @@ vertical_alignment = 1
 transform = Transform3D(1, 0, 0, 0, 0.356575, 0.934267, 0, -0.934267, 0.356575, -0.0556865, 532.519, -1.25056e-12)
 
 [node name="Walls" type="Node3D" parent="SubViewportContainer/SubViewport"]
-visible = false
 
-[node name="Wall" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls"]
-transform = Transform3D(110, 0, 0, 0, 10, 0, 0, 0, 10, 0, 5.40113, -34.9861)
-use_collision = true
-material = ExtResource("2_yc8p0")
+[node name="Wall" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Walls"]
 
-[node name="Wall5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls"]
-transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 20, -44.539, 5.40113, 20.7289)
-use_collision = true
-size = Vector3(0.747559, 1, 1)
-material = ExtResource("2_yc8p0")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Walls/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.0936, 7.033, -1.25063)
+shape = SubResource("BoxShape3D_gxob7")
 
-[node name="Wall8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls"]
-transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 20, -44.539, 5.40113, -20.3319)
-use_collision = true
-size = Vector3(0.747559, 1, 1)
-material = ExtResource("2_yc8p0")
+[node name="Wall2" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Walls"]
 
-[node name="Wall9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls"]
-transform = Transform3D(-9.53845e-07, 0, -23.3006, 0, 10, 0, 21.8214, 0, -1.0185e-06, -0.697405, 5.40113, -27.9523)
-use_collision = true
-size = Vector3(0.747559, 1, 1)
-material = ExtResource("2_yc8p0")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Walls/Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.4721, 7.033, -0.444236)
+shape = SubResource("BoxShape3D_gt4i6")
 
-[node name="Wall6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls"]
-transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 20, 44.0328, 5.40113, 20.7289)
-use_collision = true
-size = Vector3(0.747559, 1, 1)
-material = ExtResource("2_yc8p0")
+[node name="Wall3" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Walls"]
 
-[node name="Wall7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls"]
-transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 20, 44.0327, 5.40113, -20.4692)
-use_collision = true
-size = Vector3(0.747559, 1, 1)
-material = ExtResource("2_yc8p0")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Walls/Wall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.86397, 7.033, -38.3353)
+shape = SubResource("BoxShape3D_u6w8l")
 
-[node name="Wall2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls"]
-transform = Transform3D(110, 0, 0, 0, 10, 0, 0, 0, 10, 0, 5.40113, 34.9809)
-use_collision = true
-material = ExtResource("2_yc8p0")
+[node name="Wall4" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Walls"]
 
-[node name="Wall3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls"]
-transform = Transform3D(-3.4532e-06, 0, 10, 0, 10, 0, -79, 0, -4.37114e-07, -54.6305, 5.40113, -0.00739098)
-use_collision = true
-material = ExtResource("2_yc8p0")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Walls/Wall4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.86397, 7.033, 36.9454)
+shape = SubResource("BoxShape3D_lxg16")
 
-[node name="Wall4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls"]
-transform = Transform3D(-3.4532e-06, 0, 10, 0, 10, 0, -79, 0, -4.37114e-07, 54.4312, 5.40113, -0.00739098)
-use_collision = true
-material = ExtResource("2_yc8p0")
+[node name="Wall5" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Walls"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Walls/Wall5"]
+transform = Transform3D(0.653817, 0, 0.756653, 0, 1, 0, -0.756653, 0, 0.653817, 49.5022, 7.033, 29.3282)
+shape = SubResource("BoxShape3D_ik27k")
+
+[node name="Wall6" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Walls"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Walls/Wall6"]
+transform = Transform3D(0.746882, 0, 0.664957, 0, 1, 0, -0.664957, 0, 0.746882, -41.5592, 7.033, -27.1888)
+shape = SubResource("BoxShape3D_em0cj")
+
+[node name="Wall7" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Walls"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Walls/Wall7"]
+transform = Transform3D(-0.630012, 0, 0.776586, 0, 1, 0, -0.776586, 0, -0.630012, -46.7484, 7.033, 26.8527)
+shape = SubResource("BoxShape3D_dnh7d")
+
+[node name="Wall8" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Walls"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Walls/Wall8"]
+transform = Transform3D(-0.731556, 0, 0.681781, 0, 1, 0, -0.681781, 0, -0.731556, 44.9725, 7.033, -25.4362)
+shape = SubResource("BoxShape3D_4r5pc")
 
 [node name="Goals" type="Node3D" parent="SubViewportContainer/SubViewport"]
 
@@ -314,16 +334,16 @@ _initial_direction_min = Vector3(-1, 0, -1)
 _initial_direction_max = Vector3(1, 0, 0)
 
 [node name="Node3D" parent="SubViewportContainer/SubViewport" instance=ExtResource("13_joi48")]
-transform = Transform3D(1.04611, 0.746, 0.0191188, -0.70847, 1.00317, -0.378073, -0.234414, 0.297245, 1.22798, -42.7426, 5.18476, 23.9896)
+transform = Transform3D(0.573687, 0.737591, 0.882086, -0.70847, 1.00317, -0.378073, -0.905638, -0.317537, 0.854532, -38.9497, 5.18476, 26.7687)
 
 [node name="Node3D30" parent="SubViewportContainer/SubViewport" instance=ExtResource("13_joi48")]
-transform = Transform3D(-0.147537, -0.201006, 1.26058, 0.558365, 1.13097, 0.245689, -1.14791, 0.575961, -0.0425093, -49.5007, 9.29969, 14.3987)
+transform = Transform3D(0.540776, -0.49613, 1.05482, 0.558365, 1.13097, 0.245689, -1.02324, 0.35495, 0.691535, -49.5007, 9.29969, 14.3987)
 
 [node name="Node3D2" parent="SubViewportContainer/SubViewport" instance=ExtResource("13_joi48")]
 transform = Transform3D(0.00993079, 0, 0.999951, 0.609216, 0.792981, -0.00605029, -0.792942, 0.609246, 0.00787493, 3.36837, 8.4931, 29.3086)
 
 [node name="Node3D3" parent="SubViewportContainer/SubViewport" instance=ExtResource("13_joi48")]
-transform = Transform3D(-0.101467, -0.142, -0.984652, -0.228525, -0.959967, 0.161989, -0.968236, 0.241454, 0.0649548, 25.1947, 8.4931, 29.9589)
+transform = Transform3D(-0.540777, -0.01319, -0.841062, -0.228525, -0.959967, 0.161989, -0.809529, 0.279804, 0.516114, 39.2945, 8.49322, 28.8645)
 
 [node name="Node3D4" parent="SubViewportContainer/SubViewport" instance=ExtResource("13_joi48")]
 transform = Transform3D(-0.101467, -0.142, -0.984652, -0.816375, 0.577521, 0.000840504, 0.568538, 0.803932, -0.174525, 22.6267, 8.49298, -31.7822)
@@ -332,13 +352,13 @@ transform = Transform3D(-0.101467, -0.142, -0.984652, -0.816375, 0.577521, 0.000
 transform = Transform3D(-0.810245, -0.348429, -0.471275, -0.194629, 0.918426, -0.344404, 0.552831, -0.187328, -0.811964, 48.5559, 8.49323, -12.1103)
 
 [node name="Node3D28" parent="SubViewportContainer/SubViewport" instance=ExtResource("13_joi48")]
-transform = Transform3D(-0.537123, 1.25821, -0.181123, 1.25072, 0.487953, -0.319367, -0.227138, -0.28846, -1.33026, 42.2168, 7.99518, -22.645)
+transform = Transform3D(-0.582393, 1.00597, -0.743796, 1.25072, 0.487953, -0.319367, 0.0301909, -0.808899, -1.11766, 42.2168, 7.99518, -22.645)
 
 [node name="Node3D5" parent="SubViewportContainer/SubViewport" instance=ExtResource("13_joi48")]
-transform = Transform3D(0.641775, 0.208197, -0.738091, 0.430334, 0.698868, 0.571311, 0.634774, -0.684279, 0.358922, -38.7715, 8.49298, -29.2111)
+transform = Transform3D(0.375495, 0.436958, -0.817356, 0.430334, 0.698868, 0.571311, 0.820863, -0.566261, 0.0743841, -35.5939, 8.49298, -26.9568)
 
 [node name="Node3D24" parent="SubViewportContainer/SubViewport" instance=ExtResource("13_joi48")]
-transform = Transform3D(0.330722, -0.297394, 1.33801, 1.0457, 0.944596, -0.0485179, -0.886137, 1.00369, 0.442116, -49.8579, 6.60944, -18.8244)
+transform = Transform3D(-0.792921, 0.91491, 0.722713, 1.0457, 0.944596, -0.0485179, -0.515647, 0.508701, -1.20972, -48.1979, 6.60944, -18.2299)
 
 [node name="Node3D25" parent="SubViewportContainer/SubViewport" instance=ExtResource("13_joi48")]
 transform = Transform3D(-0.355366, 0.458296, -1.28522, 0.350866, 1.31412, 0.371588, 1.3186, -0.226162, -0.445244, -49.4651, 6.60956, -24.1734)
@@ -347,16 +367,16 @@ transform = Transform3D(-0.355366, 0.458296, -1.28522, 0.350866, 1.31412, 0.3715
 transform = Transform3D(0.1959, -0.0489909, 0.979399, 0.663218, -0.729067, -0.169126, 0.722334, 0.682687, -0.110332, -26.2856, 8.49286, -31.7085)
 
 [node name="Node3D7" parent="SubViewportContainer/SubViewport" instance=ExtResource("13_joi48")]
-transform = Transform3D(0.0669159, -0.679139, 0.730953, 0.921208, -0.239362, -0.306728, 0.383273, 0.693885, 0.609611, 41.4217, 9.02723, -31.3398)
+transform = Transform3D(0.0669159, -0.679139, 0.730953, 0.921208, -0.239362, -0.306728, 0.383273, 0.693885, 0.609611, 35.9319, 9.02723, -28.334)
 
 [node name="Node3D8" parent="SubViewportContainer/SubViewport" instance=ExtResource("13_joi48")]
-transform = Transform3D(1.27656, -0.179511, 1.05376, 0.820543, 1.21651, -0.786797, -0.685082, 1.12255, 1.02116, 54.5725, 5.41962, -34.8244)
+transform = Transform3D(1.27656, -0.179511, 1.05376, 0.820543, 1.21651, -0.786797, -0.685082, 1.12255, 1.02116, 51.1045, 5.41962, -35.2301)
 
 [node name="Node3D29" parent="SubViewportContainer/SubViewport" instance=ExtResource("13_joi48")]
 transform = Transform3D(1.87653, -0.547331, 0.0332953, 0.491712, 1.62708, -0.965838, 0.24269, 0.935443, 1.69943, 56.877, 5.41974, -4.86026)
 
 [node name="Node3D9" parent="SubViewportContainer/SubViewport" instance=ExtResource("13_joi48")]
-transform = Transform3D(0.522153, 0.678862, -1.42784, -1.58056, 0.188585, -0.488342, -0.0373859, 1.50858, 0.703577, -55.8899, 5.41962, -38.7721)
+transform = Transform3D(0.522153, 0.678862, -1.42784, -1.58056, 0.188585, -0.488342, -0.0373859, 1.50858, 0.703577, -47.3281, 5.41962, -38.9412)
 
 [node name="Node3D10" parent="SubViewportContainer/SubViewport" instance=ExtResource("13_joi48")]
 transform = Transform3D(0.116923, -0.185803, -1.65046, -1.65008, 0.175445, -0.136647, 0.189162, 1.64527, -0.171818, -0.565691, -0.222169, -29.677)
@@ -380,7 +400,7 @@ transform = Transform3D(0.144608, -0.300258, -1.76379, -0.740095, 1.60101, -0.33
 transform = Transform3D(0.44845, -0.300258, -1.71195, 0.602965, 1.68509, -0.137598, 1.63014, -0.540689, 0.521851, 57.2242, 3.47198, 37.9391)
 
 [node name="Node3D18" parent="SubViewportContainer/SubViewport" instance=ExtResource("13_joi48")]
-transform = Transform3D(1.44504, 1.0195, -0.30738, -0.901554, 1.4471, 0.561337, 0.566627, -0.297516, 1.67704, 41.8339, 3.14166, 26.7496)
+transform = Transform3D(0.652556, 0.942374, -1.38135, -0.901554, 1.4471, 0.561337, 1.40832, 0.489721, 0.999406, 50.505, 3.14166, 23.4613)
 
 [node name="Node3D19" parent="SubViewportContainer/SubViewport" instance=ExtResource("13_joi48")]
 transform = Transform3D(0.174113, 0.0223372, 1.7864, -0.946792, -1.52093, 0.111297, 1.51502, -0.953049, -0.135747, -8.40356, 12.7553, 38.7868)
@@ -392,7 +412,7 @@ transform = Transform3D(-0.545007, 1.66811, 0.906097, 1.80702, 0.744707, -0.2840
 transform = Transform3D(0.0301333, -0.695797, 1.65438, -0.352366, -1.62471, -0.676898, 1.75982, -0.313398, -0.163863, 19.9684, 3.47211, 36.2244)
 
 [node name="Node3D22" parent="SubViewportContainer/SubViewport" instance=ExtResource("13_joi48")]
-transform = Transform3D(-0.350839, -1.44242, -1.00914, 0.0445149, 1.02139, -1.4754, 1.75982, -0.313398, -0.163863, 29.8931, 3.47211, 37.3668)
+transform = Transform3D(-0.350839, -1.44242, -1.00914, 0.0445149, 1.02139, -1.4754, 1.75982, -0.313398, -0.163863, 29.8931, 3.47211, 40.5781)
 
 [node name="Node3D20" parent="SubViewportContainer/SubViewport" instance=ExtResource("13_joi48")]
 transform = Transform3D(1.7181, 0.488335, -0.177989, -0.350635, 1.54271, 0.848004, 0.383675, -0.776907, 1.57202, 53.9422, 3.47198, 13.5176)
