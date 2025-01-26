@@ -20,6 +20,7 @@ const BUBBLE: PackedScene = preload("res://bubbles/Bubble.tscn")
         return _controller_index
         
 @export var flipped := false
+@export var player_id := 0
 
 @export_range(0, 10000, 0.1, "suffix:deg/s") var angular_speed := 80
 @export_range(0, TAU, 1, "radians_as_degrees") var angle_limit := deg_to_rad(80)
@@ -28,6 +29,7 @@ const BUBBLE: PackedScene = preload("res://bubbles/Bubble.tscn")
 
 @export_node_path("Node3D") var bubble_container_node_path := ^""
 @export_node_path("Node3D") var arrow_container_node_path := ^""
+@export_node_path("Node3D") var charge_bar := ^""
 
 @export var is_game_over = false
 
@@ -40,6 +42,7 @@ var _bubble_count_in_spawn := 0
 var _arrow_count_in_spawn := 0
 
 var _current_cooldown := 0.0
+var charge_bar_sharder: ShaderMaterial
 
 
 @onready var _direction_pivot := $DirectionPivot as Marker3D
@@ -61,6 +64,9 @@ func _physics_process(delta: float) -> void:
 
     if _current_cooldown > 0.0:
         _current_cooldown -= delta
+        var charge = (arrow_cooldown - _current_cooldown)/arrow_cooldown
+        charge_bar_sharder = get_node(charge_bar).get_mesh().get_active_material(0) as ShaderMaterial
+        charge_bar_sharder.set_shader_parameter("charge", charge)
 
     _update_player_rotation()
     _process_shoot_events()
