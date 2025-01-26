@@ -9,14 +9,13 @@ const INITIAL_ARROW_IMPULSE: float = 30.0
 const ARROW: PackedScene = preload("res://arrows/Arrow.tscn")
 const BUBBLE: PackedScene = preload("res://bubbles/Bubble.tscn")
 
-@export var controller_index : int :
-    set(value) :
-        print(value)
+@export var controller_index: int:
+    set(value):
         _controller_index = value
-        if (value == 0) :
+        if value == 0:
             var shaderMat := shoot_direction_mesh.get_active_material(0) as ShaderMaterial
             shaderMat.set_shader_parameter("player_color", Vector3(0.25,1.9,1.9))
-    get :
+    get:
         return _controller_index
 
 @export var flipped := false

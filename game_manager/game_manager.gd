@@ -44,7 +44,7 @@ func increase_score(player_id: int):
         if(_score_1_value >= victory_score):
             victory(1)
     else:
-        print("Out of bounds player id!")
+        printerr("Out of bounds player id!")
     _score_ui.update_scores(_score_0_value, _score_1_value)
 
 
