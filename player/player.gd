@@ -50,6 +50,7 @@ var charge_bar_sharder: ShaderMaterial
 @onready var _arrow_container_node := get_node(arrow_container_node_path) as Node3D
 @onready var _bubble_container_node := get_node(bubble_container_node_path) as Node3D
 @onready var shoot_direction_mesh: MeshInstance3D = $DirectionPivot/ShootDirectionMesh
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 func _ready() -> void:
@@ -101,6 +102,7 @@ func _shoot_projectile(projectile_scene: PackedScene, initial_impulse: float, pr
         new_projectile.initial_direction = _direction_pivot.global_transform.basis.x
     projectile_container.add_child(new_projectile)
     new_projectile.global_position = _direction_pivot.global_position
+    audio_stream_player.play()
 
 
 func _is_input_just_pressed(input_type: InputManager.InputActionType) -> bool:

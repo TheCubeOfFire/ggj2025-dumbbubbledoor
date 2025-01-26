@@ -33,8 +33,8 @@ const BUBBLE: PackedScene = preload("res://bubbles/Bubble.tscn")
 @onready var _bubble_collision: CollisionShape3D = $BubbleCollision
 
 @onready var _lifetime_timer: Timer = $LifetimeTimer
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
-@onready var audio_player: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 @onready var bubble_pop_anim: AnimationPlayer = $AnimationPlayer
 
@@ -82,7 +82,7 @@ func _explode():
         _mesh.visible = false
         _exploded = true
         _bubble_collision.set_deferred("disabled",true)
-        audio_player.play(0.5)
+        audio_stream_player.play(0.5)
         var particle_emitter : GPUParticles3D = $GPUParticles3D
         particle_emitter.hide()
         bubble_pop_anim.play("Pop");

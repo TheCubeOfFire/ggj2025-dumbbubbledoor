@@ -12,6 +12,7 @@ const CREDITS := preload("res://menus/credits/credits.tscn")
 func _ready() -> void:
     _play_button.grab_focus.call_deferred()
     _quit_button.visible = OS.get_name() != "Web"
+    MusicPlayer.play_music()
 
 
 func _on_play_button_pressed() -> void:

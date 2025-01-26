@@ -3,6 +3,8 @@ extends StaticBody3D
 @export var bounce_force: float
 
 @onready var bounce_anim: AnimationPlayer = $AnimationPlayer
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
     if is_instance_of(body, GeneralRigidbody):
@@ -14,3 +16,4 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
         bounce_anim.play("Bounce");
         force.normalized()
         body.apply_central_impulse(force * bounce_force)
+        audio_stream_player.play()

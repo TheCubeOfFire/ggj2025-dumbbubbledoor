@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmx61imxe1t4v"]
+[gd_scene load_steps=7 format=3 uid="uid://dmx61imxe1t4v"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_4o028"]
 [ext_resource type="Shader" path="res://player/player.gdshader" id="2_lrqx6"]
+[ext_resource type="AudioStream" uid="uid://35sk5tnh6n4" path="res://sounds/files/launch.mp3" id="3_n0md7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_11m7u"]
 resource_local_to_scene = true
@@ -35,6 +36,10 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 shape = SubResource("CylinderShape3D_lixrq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_n0md7")
+volume_db = -25.0
 
 [connection signal="body_entered" from="SpawnArea" to="." method="_on_spawn_area_body_entered"]
 [connection signal="body_exited" from="SpawnArea" to="." method="_on_spawn_area_body_exited"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://dcn1kgwbe7mb2"]
+[gd_scene load_steps=18 format=3 uid="uid://dcn1kgwbe7mb2"]
 
 [ext_resource type="Script" path="res://bubbles/bubble.gd" id="1_0x0o0"]
 [ext_resource type="PhysicsMaterial" uid="uid://dmclqapyrmvtu" path="res://bubbles/BubblePhysicsMaterial.tres" id="1_pjam5"]
 [ext_resource type="Shader" path="res://bubbles/celshade.gdshader" id="3_v5ov6"]
 [ext_resource type="Shader" path="res://bubbles/bubble.gdshader" id="4_bwag8"]
 [ext_resource type="Shader" path="res://bubbles/bubblePop.gdshader" id="5_cu1oe"]
+[ext_resource type="AudioStream" uid="uid://mdei22y74stc" path="res://sounds/files/bubble_pop.mp3" id="6_2ufd1"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wiu5i"]
 
@@ -61,29 +62,6 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
-tracks/3/type = "audio"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../AudioStreamPlayer3D")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"clips": [],
-"times": PackedFloat32Array()
-}
-tracks/3/use_blend = true
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../AudioStreamPlayer3D:playing")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_p8dr6"]
 length = 0.001
@@ -110,18 +88,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../AudioStreamPlayer3D:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5122t"]
@@ -198,8 +164,9 @@ trail_lifetime = 0.4
 process_material = SubResource("ParticleProcessMaterial_l6f1n")
 draw_pass_1 = SubResource("QuadMesh_old65")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-volume_db = 11.097
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_2ufd1")
+volume_db = 5.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="ExplosionArea" to="." method="_on_area_3d_body_entered"]
