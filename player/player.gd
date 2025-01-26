@@ -9,16 +9,16 @@ const INITIAL_ARROW_IMPULSE: float = 30.0
 const ARROW: PackedScene = preload("res://arrows/Arrow.tscn")
 const BUBBLE: PackedScene = preload("res://bubbles/Bubble.tscn")
 
-@export var controller_index : int : 
-    set(value) : 
+@export var controller_index : int :
+    set(value) :
         print(value)
-        _controller_index = value	
+        _controller_index = value
         if (value == 0) :
             var shaderMat := shoot_direction_mesh.get_active_material(0) as ShaderMaterial
             shaderMat.set_shader_parameter("player_color", Vector3(0.25,1.9,1.9))
-    get : 
+    get :
         return _controller_index
-        
+
 @export var flipped := false
 @export var player_id := 0
 
@@ -33,7 +33,7 @@ const BUBBLE: PackedScene = preload("res://bubbles/Bubble.tscn")
 
 @export var is_game_over = false
 
-var _controller_index := -1 
+var _controller_index := -1
 
 var _default_rotation := PI if flipped else 0.0
 var _current_rotation := 0.0
@@ -58,7 +58,7 @@ func _ready() -> void:
 
 func get_spawn_pos():
     return _direction_pivot.global_position
-    
+
 func _physics_process(delta: float) -> void:
     if _controller_index < 0 || _controller_index >= InputManager.get_player_count() || is_game_over:
         return

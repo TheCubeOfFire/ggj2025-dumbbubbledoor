@@ -75,8 +75,8 @@ func _on_body_entered(body: Node) -> void:
         _explode()
         body.bounce_on_bubble(_compute_explosion_direction(body))
         _arrow_touched = body
-    
-    
+
+
 func _explode():
         _explosion_area_collision.set_deferred("disabled",false)
         _mesh.visible = false
@@ -133,7 +133,7 @@ func _frag_effect():
         if is_instance_of(new_projectile, Bubble):
             new_projectile.bubble_type = BubbleTypes.Normal
             self.get_parent_node_3d().add_child(new_projectile)
-            new_projectile.global_position = self.global_position 
+            new_projectile.global_position = self.global_position
 
 func _process(_delta) -> void:
     _mesh.rotate_x(1.0*_delta)

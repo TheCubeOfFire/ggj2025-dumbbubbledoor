@@ -20,8 +20,8 @@ extends RigidBody3D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     apply_central_impulse(initial_force * initial_direction.normalized())
-    
-    
-func _physics_process(delta: float) -> void:
+
+
+func _physics_process(_delta: float) -> void:
     if(abs(global_position.x) > max_x || abs(global_position.z) > max_z):
         queue_free()
