@@ -10,7 +10,7 @@ uniform sampler2D depth_texture : hint_depth_texture, repeat_disable, filter_nea
 uniform sampler2D screen_texture : hint_screen_texture;
 
 void fragment() {
-    float depth = textureLod(depth_texture, SCREEN_UV, 0.0).r;
+    float depth = texture(depth_texture, SCREEN_UV, 0.0).r;
     vec4 upos = INV_PROJECTION_MATRIX * vec4(SCREEN_UV * 2.0 - 1.0, depth, 1.0);
     vec3 pixel_position = upos.xyz / upos.w;
     vec2 pixellatedUV = SCREEN_UV * VIEWPORT_SIZE - mod(SCREEN_UV * VIEWPORT_SIZE, downscale_value);

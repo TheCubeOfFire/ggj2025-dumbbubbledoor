@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cqibguwxjj4k8"]
+[gd_scene load_steps=38 format=3 uid="uid://cqibguwxjj4k8"]
 
 [ext_resource type="Script" path="res://Map/arena.gd" id="1_21lse"]
 [ext_resource type="PackedScene" uid="uid://6qqli7csrfdu" path="res://Goals/goal.tscn" id="1_orbya"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://dtbl4r3rx1ycr" path="res://UI/ace.png" id="18_h3i3g"]
 [ext_resource type="Shader" path="res://Map/decor.gdshader" id="19_wluu7"]
 [ext_resource type="Texture2D" uid="uid://bnlvkjyg2tl25" path="res://UI/aceSpade.png" id="20_lrps1"]
+[ext_resource type="PackedScene" uid="uid://cpagy2qpyy7r0" path="res://charge_bar/charge_bar.tscn" id="22_wn3h2"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_org1t"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
@@ -35,6 +36,7 @@ shader = ExtResource("5_j5pkt")
 shader_parameter/downscale_value = 3.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_vwtxh"]
+lightmap_size_hint = Vector2i(1002, 1002)
 material = SubResource("ShaderMaterial_6ya3o")
 size = Vector2(200, 200)
 
@@ -155,14 +157,14 @@ script = ExtResource("1_21lse")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 material = SubResource("ShaderMaterial_0hb33")
-offset_right = 1920.0
+offset_right = 1980.0
 offset_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(1920, 1080)
+size = Vector2i(1980, 1080)
 render_target_update_mode = 4
 
 [node name="Floor" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
@@ -180,7 +182,8 @@ near = 2.929
 far = 56.92
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/MainCamera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.54)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.864, -23.808)
+visible = false
 cast_shadow = 0
 extra_cull_margin = 16384.0
 gi_mode = 0
@@ -194,13 +197,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.646, -56.539)
 cast_shadow = 0
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_aacwv")
-
-[node name="GameManager" parent="SubViewportContainer/SubViewport/MainCamera" instance=ExtResource("3_7oehc")]
-
-[node name="Dots" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/MainCamera"]
-transform = Transform3D(-0.0337482, -0.0113902, -0.999365, -4.47035e-08, 0.999935, -0.0113967, 0.999431, -0.000384577, -0.033746, -0.53367, 22.4012, -34.9197)
-mesh = ExtResource("9_uae7s")
-surface_material_override/0 = SubResource("ShaderMaterial_45rix")
 
 [node name="MatchScore" type="Node3D" parent="SubViewportContainer/SubViewport/MainCamera"]
 script = ExtResource("10_cjd43")
@@ -231,6 +227,13 @@ text = "Game over"
 label_settings = ExtResource("12_1v54k")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="GameManager" parent="SubViewportContainer/SubViewport/MainCamera" instance=ExtResource("3_7oehc")]
+
+[node name="Dots" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/MainCamera"]
+transform = Transform3D(-0.0337482, -0.0113902, -0.999365, -4.47035e-08, 0.999935, -0.0113967, 0.999431, -0.000384577, -0.033746, -0.53367, 22.4012, -34.9197)
+mesh = ExtResource("9_uae7s")
+surface_material_override/0 = SubResource("ShaderMaterial_45rix")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 0.356575, 0.934267, 0, -0.934267, 0.356575, -0.0556865, 532.519, -1.25056e-12)
@@ -306,6 +309,12 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 42, 0,
 flipped = true
 bubble_container_node_path = NodePath("../../Bubbles")
 arrow_container_node_path = NodePath("../../Arrows")
+
+[node name="ChargeBar" parent="SubViewportContainer/SubViewport/Players" instance=ExtResource("22_wn3h2")]
+transform = Transform3D(53.1886, 6.08594e-06, -2.0766e-13, -4.61963e-06, 69.162, 7.92892, -5.29608e-07, 7.92892, -69.162, 26.554, -2.55689, 11.9798)
+
+[node name="ChargeBar2" parent="SubViewportContainer/SubViewport/Players" instance=ExtResource("22_wn3h2")]
+transform = Transform3D(-53.1884, 4.49219e-07, -9.5404e-06, -4.89231e-07, 69.162, 7.92892, 7.28087e-06, 7.92892, -69.162, -26.7351, -2.67679, 12.1764)
 
 [node name="Bubbles" type="Node3D" parent="SubViewportContainer/SubViewport"]
 

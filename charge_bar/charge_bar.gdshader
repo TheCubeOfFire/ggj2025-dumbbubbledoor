@@ -8,9 +8,10 @@ void vertex() {
 }
 
 void fragment() {
-    float val = floor(UV.x + charge - 0.1 * (abs(UV.y - 0.5)) + 0.01 * (sin(((((2.0 * TIME) + UV.y * 10.0)-0.5)*2.0))));
-    ALBEDO = vec3(val * color);
-    ALPHA = val;
+    float val = floor(UV.x + charge - 0.1 * (abs(UV.y - 0.5)) + 0.01 * (sin(((((2.0 * TIME) + UV.y * 4.0)-0.5)*2.0))));
+    float coord = SCREEN_UV.x - 0.5;
+    ALBEDO = 100.0 * vec3(val * vec3(coord,-2.0*coord,-2.0*coord));
+    ALPHA = val * floor(2.0 * (0.5 - abs(UV.y - 0.5)) * 4.0)/8.0;
 }
 
 //void light() {
