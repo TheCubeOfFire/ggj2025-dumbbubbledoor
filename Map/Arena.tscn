@@ -1,9 +1,8 @@
-[gd_scene load_steps=36 format=3 uid="uid://cqibguwxjj4k8"]
+[gd_scene load_steps=37 format=3 uid="uid://cqibguwxjj4k8"]
 
 [ext_resource type="Script" path="res://Map/arena.gd" id="1_21lse"]
 [ext_resource type="PackedScene" uid="uid://6qqli7csrfdu" path="res://Goals/goal.tscn" id="1_orbya"]
 [ext_resource type="Material" uid="uid://drcwsv8agou3e" path="res://Map/FloorMaterial.tres" id="1_y3b3u"]
-[ext_resource type="PackedScene" uid="uid://ms8tm6puffrj" path="res://UI/match_score.tscn" id="2_0gatl"]
 [ext_resource type="Shader" path="res://bubbles/screenSpace.gdshader" id="2_s3ial"]
 [ext_resource type="Material" uid="uid://cshjkxucqox8d" path="res://Map/WallMaterial.tres" id="2_yc8p0"]
 [ext_resource type="PackedScene" uid="uid://dvt7nvfj6o5td" path="res://game_manager/game_manager.tscn" id="3_7oehc"]
@@ -14,8 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://dayly4pvdvtsb" path="res://obstacles/bouncer.tscn" id="8_tl4ky"]
 [ext_resource type="PackedScene" uid="uid://dmi3nbrha6kqn" path="res://spawners/bubble_spawner.tscn" id="9_6ypwk"]
 [ext_resource type="ArrayMesh" uid="uid://c6nwdgsamkt0h" path="res://score/dots.obj" id="9_uae7s"]
+[ext_resource type="Script" path="res://Map/match_score.gd" id="10_cjd43"]
 [ext_resource type="Shader" path="res://bubbles/celshade.gdshader" id="10_me4oc"]
 [ext_resource type="Shader" path="res://bubbles/bubble.gdshader" id="11_l0p67"]
+[ext_resource type="LabelSettings" uid="uid://deva1rayrwu8a" path="res://menus/victory_screen/game_over_label_settings.tres" id="12_1v54k"]
 [ext_resource type="PackedScene" uid="uid://cyae0du7tod4e" path="res://wall/wall.tscn" id="13_joi48"]
 [ext_resource type="Texture2D" uid="uid://dtbl4r3rx1ycr" path="res://UI/ace.png" id="18_h3i3g"]
 [ext_resource type="Shader" path="res://Map/decor.gdshader" id="19_wluu7"]
@@ -171,31 +172,42 @@ cast_shadow = 0
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_aacwv")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="SubViewportContainer/SubViewport/MainCamera"]
-
-[node name="MatchScore" parent="SubViewportContainer/SubViewport/MainCamera/CanvasLayer" instance=ExtResource("2_0gatl")]
-visible = false
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.0
-grow_vertical = 1
-scale = Vector2(4.855, 4.855)
-metadata/_edit_use_anchors_ = true
-
 [node name="GameManager" parent="SubViewportContainer/SubViewport/MainCamera" instance=ExtResource("3_7oehc")]
-
-[node name="ScoreLeft" parent="SubViewportContainer/SubViewport/MainCamera" instance=ExtResource("8_0ivo8")]
-transform = Transform3D(0.489563, 0.124177, 1.28963, 9.65291e-09, 1.37862, -0.132746, -1.29559, 0.0469225, 0.487309, -6.7157, 23.0471, -33.4941)
-player = 1
-
-[node name="ScoreRight" parent="SubViewportContainer/SubViewport/MainCamera" instance=ExtResource("8_0ivo8")]
-transform = Transform3D(-0.120711, -0.206318, 1.36422, -7.45058e-09, 1.36943, 0.207107, -1.37973, 0.0180505, -0.119354, 5.60418, 23.0471, -33.4941)
 
 [node name="Dots" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/MainCamera"]
 transform = Transform3D(-0.0337482, -0.0113902, -0.999365, -4.47035e-08, 0.999935, -0.0113967, 0.999431, -0.000384577, -0.033746, -0.53367, 22.4012, -34.9197)
 mesh = ExtResource("9_uae7s")
 surface_material_override/0 = SubResource("ShaderMaterial_45rix")
+
+[node name="MatchScore" type="Node3D" parent="SubViewportContainer/SubViewport/MainCamera"]
+script = ExtResource("10_cjd43")
+
+[node name="ScoreLeft" parent="SubViewportContainer/SubViewport/MainCamera/MatchScore" instance=ExtResource("8_0ivo8")]
+transform = Transform3D(0.489563, 0.124177, 1.28963, 1.49012e-08, 1.37862, -0.132746, -1.29559, 0.0469225, 0.487309, -6.7157, 23.0471, -33.4941)
+player = 1
+
+[node name="ScoreRight" parent="SubViewportContainer/SubViewport/MainCamera/MatchScore" instance=ExtResource("8_0ivo8")]
+transform = Transform3D(-0.120711, -0.206318, 1.36422, -7.45058e-09, 1.36943, 0.207107, -1.37973, 0.0180505, -0.119354, 5.60418, 23.0471, -33.4941)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="SubViewportContainer/SubViewport/MainCamera/MatchScore"]
+
+[node name="GameOverLabel" type="Label" parent="SubViewportContainer/SubViewport/MainCamera/MatchScore/CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -79.0
+offset_right = 574.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game over"
+label_settings = ExtResource("12_1v54k")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 0.356575, 0.934267, 0, -0.934267, 0.356575, -0.0556865, 532.519, -1.25056e-12)

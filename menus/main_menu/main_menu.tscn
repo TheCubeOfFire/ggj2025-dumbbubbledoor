@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://menus/main_menu/main_menu.gd" id="1_3eji4"]
 [ext_resource type="Shader" path="res://menus/main_menu/main_menu.gdshader" id="1_udch3"]
 [ext_resource type="PackedScene" uid="uid://bltmj0yrnhuj7" path="res://menus/player_selection/player_selection.tscn" id="2_uim1l"]
-[ext_resource type="Theme" uid="uid://bl4qn56jl0byb" path="res://menus/UITheme.theme" id="3_oryuj"]
+[ext_resource type="Theme" path="res://menus/UITheme.theme" id="3_oryuj"]
 [ext_resource type="Shader" path="res://menus/main_menu/2DUI.gdshader" id="4_cpk31"]
 [ext_resource type="Texture2D" uid="uid://cjk1cmx42mu5c" path="res://UI/OB.png" id="4_i8e83"]
 [ext_resource type="Texture2D" uid="uid://de5da13hyg3ih" path="res://UI/OR.png" id="5_vy8vx"]
@@ -322,6 +322,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
@@ -329,6 +330,7 @@ material = SubResource("ShaderMaterial_8phgh")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+mouse_filter = 2
 texture = SubResource("ViewportTexture_s62gw")
 stretch_mode = 3
 

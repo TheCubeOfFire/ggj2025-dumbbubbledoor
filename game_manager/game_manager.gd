@@ -1,3 +1,5 @@
+class_name GameManager
+
 extends Node
 
 const VICTORY_SCREEN := preload("res://menus/victory_screen/victory_screen.tscn")
@@ -11,7 +13,7 @@ const END_JINGLE := preload("res://sounds/files/game-over.mp3")
 ## time to wait after game is over
 @export var game_over_cooldown: float
 
-@onready var _score_ui: Node = $"../CanvasLayer/MatchScore"
+@onready var _score_ui: Node = $"../MatchScore"
 @onready var left_player: Player = $"../../Players/LeftPlayer"
 @onready var right_player: Player = $"../../Players/RightPlayer"
 
@@ -23,7 +25,7 @@ var _score_1_value: int
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func on_game_start() :
     reset_scores()
     MusicPlayer.play_music()
     audio_stream_player.stream = START_JINGLE

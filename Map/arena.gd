@@ -4,11 +4,13 @@ extends Node3D
 var _players: Array[Player] = []
 
 @onready var _player_container := $SubViewportContainer/SubViewport/Players as Node3D
+@onready var game_manager: GameManager = $SubViewportContainer/SubViewport/MainCamera/GameManager
 
 
 func _ready() -> void:
     _init_players()
     _init_controllers()
+    game_manager.on_game_start()
 
 
 func _init_players() -> void:
