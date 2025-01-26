@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpagy2qpyy7r0"]
+
+[ext_resource type="Shader" path="res://charge_bar/charge_bar.gdshader" id="1_vpni6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uqwpy"]
+render_priority = 0
+shader = ExtResource("1_vpni6")
+shader_parameter/charge = 0.5
+shader_parameter/color = Vector3(0.25, 1, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_1nl5h"]
+material = SubResource("ShaderMaterial_uqwpy")
+size = Vector2(1, 0.25)
+orientation = 1
+
+[node name="ChargeBar" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_1nl5h")
