@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cqibguwxjj4k8"]
+[gd_scene load_steps=46 format=3 uid="uid://cqibguwxjj4k8"]
 
 [ext_resource type="Script" path="res://Map/arena.gd" id="1_21lse"]
 [ext_resource type="PackedScene" uid="uid://6qqli7csrfdu" path="res://Goals/goal.tscn" id="1_orbya"]
@@ -86,6 +86,9 @@ size = Vector3(49.5779, 15.0662, 22.2045)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4r5pc"]
 size = Vector3(49.5779, 15.0662, 21.5837)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2jvef"]
+size = Vector3(22.7693, 15.0662, 18.9333)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uk6ew"]
 resource_local_to_scene = true
@@ -286,6 +289,12 @@ shape = SubResource("BoxShape3D_dnh7d")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Walls/Wall8"]
 transform = Transform3D(-0.731556, 0, 0.681781, 0, 1, 0, -0.681781, 0, -0.731556, 44.9725, 7.033, -25.4362)
 shape = SubResource("BoxShape3D_4r5pc")
+
+[node name="Wall9" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Walls"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Walls/Wall9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.546013, 7.033, -27.8224)
+shape = SubResource("BoxShape3D_2jvef")
 
 [node name="Goals" type="Node3D" parent="SubViewportContainer/SubViewport"]
 
