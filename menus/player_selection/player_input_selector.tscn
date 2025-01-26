@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1bchpq8mi6ed"]
+[gd_scene load_steps=10 format=3 uid="uid://c1bchpq8mi6ed"]
 
 [ext_resource type="Script" path="res://menus/player_selection/player_input_selector.gd" id="1_b4iox"]
+[ext_resource type="Theme" path="res://menus/UITheme.theme" id="2_nmiai"]
+[ext_resource type="FontFile" uid="uid://bdoh2qdqra3ri" path="res://UI/pansyhand.ttf" id="3_3ts78"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bfx6h"]
 load_path = "res://.godot/imported/keyboard_arrows.png-6fc9f4dcb330d1da260571f92bc6080e.ctex"
@@ -35,13 +37,19 @@ current_controller_node_path = NodePath("ControllerHBoxContainer")
 [node name="TitleLabel" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_nmiai")
+theme_override_fonts/font = ExtResource("3_3ts78")
 text = "Player
 "
 
 [node name="StatusLabel" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
+horizontal_alignment = 1
 
 [node name="ControllerHBoxContainer" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4

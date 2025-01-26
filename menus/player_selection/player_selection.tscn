@@ -1,8 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://bltmj0yrnhuj7"]
+[gd_scene load_steps=22 format=3 uid="uid://bltmj0yrnhuj7"]
 
 [ext_resource type="Script" path="res://menus/player_selection/player_selection.gd" id="1_rl3rk"]
 [ext_resource type="PackedScene" uid="uid://c1bchpq8mi6ed" path="res://menus/player_selection/player_input_selector.tscn" id="1_rnhru"]
+[ext_resource type="Theme" path="res://menus/UITheme.theme" id="2_1bdf6"]
 [ext_resource type="Shader" path="res://menus/main_menu/main_menu.gdshader" id="3_m3k3w"]
+[ext_resource type="FontFile" uid="uid://bdoh2qdqra3ri" path="res://UI/pansyhand.ttf" id="3_tya0d"]
 [ext_resource type="Shader" path="res://player/pseudoDepthShader.gdshader" id="4_u0enp"]
 [ext_resource type="ArrayMesh" uid="uid://2rt6yprvfsfu" path="res://UI/P.obj" id="5_pukop"]
 [ext_resource type="Shader" path="res://bubbles/celshade.gdshader" id="6_dtxeb"]
@@ -66,15 +68,31 @@ player_confirm_physical_key = 32
 player_confirm_gamepad_button = 0
 player_input_selectors = [NodePath("LeftPlayer"), NodePath("RightPlayer")]
 
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -534.0
+offset_right = 534.0
+offset_bottom = 211.0
+grow_horizontal = 2
+theme = ExtResource("2_1bdf6")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("3_tya0d")
+theme_override_font_sizes/normal_font_size = 128
+bbcode_enabled = true
+text = "[center]Find a player to fight against[/center]"
+scroll_active = false
+autowrap_mode = 1
+
 [node name="LeftPlayer" parent="." instance=ExtResource("1_rnhru")]
 layout_mode = 1
-anchors_preset = 4
+anchors_preset = -1
+anchor_left = 0.2
 anchor_top = 0.5
-anchor_right = 0.0
+anchor_right = 0.227
 anchor_bottom = 0.5
-offset_top = -20.0
-offset_bottom = 20.0
-grow_horizontal = 1
 title_text = "Left Player"
 player_index = 0
 select_physical_key_code = 81
@@ -82,11 +100,11 @@ select_gamepad_button = 9
 
 [node name="RightPlayer" parent="." instance=ExtResource("1_rnhru")]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = 0.8
 anchor_top = 0.5
+anchor_right = 0.8
 anchor_bottom = 0.5
-grow_horizontal = 0
 title_text = "Right Player"
 player_index = 1
 select_physical_key_code = 69
@@ -124,13 +142,11 @@ far = 62.98
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/MainCamera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.38419e-07, -6.54)
-visible = false
 cast_shadow = 0
 extra_cull_margin = 16384.0
 gi_mode = 0
 visibility_range_end = 4096.0
 visibility_range_end_margin = 4096.0
-visibility_range_fade_mode = 1
 mesh = SubResource("QuadMesh_gn4qk")
 
 [node name="Dots" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/MainCamera"]
