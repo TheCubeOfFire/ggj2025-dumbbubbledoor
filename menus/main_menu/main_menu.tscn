@@ -14,7 +14,7 @@
 [ext_resource type="Shader" path="res://player/pseudoDepthShader.gdshader" id="12_bm0pj"]
 [ext_resource type="Shader" path="res://score/score.gdshader" id="13_1up8d"]
 [ext_resource type="Shader" path="res://bubbles/background.gdshader" id="13_d2f6t"]
-[ext_resource type="PackedScene" uid="uid://ch4gbfrgrgxom" path="res://bubbles/Bubble.tscn" id="15_4cj0t"]
+[ext_resource type="PackedScene" uid="uid://dcn1kgwbe7mb2" path="res://bubbles/Bubble.tscn" id="15_4cj0t"]
 [ext_resource type="ArrayMesh" uid="uid://mkxec8qahn36" path="res://score/1.obj" id="16_8oufj"]
 [ext_resource type="Shader" path="res://bubbles/celshade.gdshader" id="18_0qeav"]
 [ext_resource type="PackedScene" uid="uid://cyae0du7tod4e" path="res://wall/wall.tscn" id="25_yrx0q"]

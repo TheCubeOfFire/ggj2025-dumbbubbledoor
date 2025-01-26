@@ -5,7 +5,8 @@ extends GeneralRigidbody
 enum BubbleTypes{
     Normal,
     Giant,
-    Frag
+    Frag,
+    ArrowDestroyer
 }
 
 const BUBBLE: PackedScene = preload("res://bubbles/Bubble.tscn")
@@ -58,6 +59,10 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node) -> void:
     if is_instance_of(body, Arrow) && !_exploded:
+        if bubble_type == BubbleTypes.Frag:
+            _frag_effect()
+        if bubble_type == BubbleTypes.ArrowDestroyer:
+            body.queue_free()
         _explode()
         body.bounce_on_bubble(_compute_explosion_direction(body))
         _arrow_touched = body
@@ -69,8 +74,6 @@ func _explode():
         _exploded = true
         _bubble_collision.set_deferred("disabled",true)
         audio_player.play(0.5)
-        if bubble_type == BubbleTypes.Frag:
-            _frag_effect()
         var particle_emitter : GPUParticles3D = $GPUParticles3D
         particle_emitter.hide()
         bubble_pop_anim.play("Pop");

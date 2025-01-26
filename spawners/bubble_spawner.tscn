@@ -8,8 +8,8 @@
 script = ExtResource("1_klgdi")
 min_force = 10.0
 max_force = 15.0
-min_interval = 1.0
-max_interval = 7.0
+min_interval = 5.0
+max_interval = 10.0
 
 [node name="Area3D" type="Area3D" parent="."]
 
