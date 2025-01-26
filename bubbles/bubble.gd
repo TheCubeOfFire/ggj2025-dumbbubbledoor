@@ -46,16 +46,25 @@ func _ready() -> void:
     super()
     _lifetime_timer.wait_time = randf_range(min_lifetime, max_lifetime)
     _lifetime_timer.start()
-    if bubble_type == BubbleTypes.Frag:
-        print("ok")
-    if(player == 0):
-        var celShader := _mesh.get_active_material(0).next_pass as ShaderMaterial
-        celShader.set_shader_parameter("player_color", Vector3(0.25,1.9,1.9))
-    else :
+    if bubble_type == BubbleTypes.Giant:
         var celShader := _mesh.get_active_material(0).next_pass as ShaderMaterial
         celShader.set_shader_parameter("player_color", Vector3(1.9,0.25,0.25))
         var particle_emitter : GPUParticles3D = $GPUParticles3D
         particle_emitter.draw_pass_1.surface_get_material(0).set_shader_parameter("player_color", Vector3(1.9,0.25,0.25))
+    elif bubble_type == BubbleTypes.Frag:
+        var celShader := _mesh.get_active_material(0).next_pass as ShaderMaterial
+        celShader.set_shader_parameter("player_color", Vector3(0.25,1.9,0.25))
+        var particle_emitter : GPUParticles3D = $GPUParticles3D
+        particle_emitter.draw_pass_1.surface_get_material(0).set_shader_parameter("player_color", Vector3(0.25,1.9,0.25))
+    elif bubble_type == BubbleTypes.ArrowDestroyer:
+        var celShader := _mesh.get_active_material(0).next_pass as ShaderMaterial
+        celShader.set_shader_parameter("player_color", Vector3(1.9,0.25,1.9))
+        var particle_emitter : GPUParticles3D = $GPUParticles3D
+        particle_emitter.draw_pass_1.surface_get_material(0).set_shader_parameter("player_color", Vector3(1.9,0.25,1.9))
+    else:
+        var celShader := _mesh.get_active_material(0).next_pass as ShaderMaterial
+        celShader.set_shader_parameter("player_color", Vector3(0.25,1.9,1.9))
+
 
 func _on_body_entered(body: Node) -> void:
     if is_instance_of(body, Arrow) && !_exploded:
