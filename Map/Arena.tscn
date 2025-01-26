@@ -22,7 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://bnlvkjyg2tl25" path="res://UI/aceSpade.png" id="20_lrps1"]
 [ext_resource type="PackedScene" uid="uid://cpagy2qpyy7r0" path="res://charge_bar/charge_bar.tscn" id="22_wn3h2"]
 
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_org1t"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
 
@@ -32,7 +31,7 @@ shader = ExtResource("2_s3ial")
 shader_parameter/screen_texture = SubResource("ViewportTexture_org1t")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6ya3o"]
-render_priority = 0
+render_priority = -1
 shader = ExtResource("5_j5pkt")
 shader_parameter/downscale_value = 3.0
 
@@ -184,7 +183,6 @@ far = 56.92
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/MainCamera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.864, -23.808)
-visible = false
 cast_shadow = 0
 extra_cull_margin = 16384.0
 gi_mode = 0
@@ -304,7 +302,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.2605, 5.4, -2.71724)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 0, 0)
 bubble_container_node_path = NodePath("../../Bubbles")
 arrow_container_node_path = NodePath("../../Arrows")
-charge_bar = NodePath("../../ChargeBars/ChargeBarLeft")
+charge_bar = NodePath("../../ChargeBars/ChargeBar")
 
 [node name="RightPlayer" parent="SubViewportContainer/SubViewport/Players" instance=ExtResource("4_ntw2r")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 42, 0, 0)
@@ -312,13 +310,7 @@ flipped = true
 player_id = 1
 bubble_container_node_path = NodePath("../../Bubbles")
 arrow_container_node_path = NodePath("../../Arrows")
-charge_bar = NodePath("../../ChargeBars/ChargeBarRight")
-
-[node name="ChargeBar" parent="SubViewportContainer/SubViewport/Players" instance=ExtResource("22_wn3h2")]
-transform = Transform3D(53.1886, 6.08594e-06, -2.0766e-13, -4.61963e-06, 69.162, 7.92892, -5.29608e-07, 7.92892, -69.162, 26.554, -2.55689, 11.9798)
-
-[node name="ChargeBar2" parent="SubViewportContainer/SubViewport/Players" instance=ExtResource("22_wn3h2")]
-transform = Transform3D(-53.1884, 4.49219e-07, -9.5404e-06, -4.89231e-07, 69.162, 7.92892, 7.28087e-06, 7.92892, -69.162, -26.7351, -2.67679, 12.1764)
+charge_bar = NodePath("../../ChargeBars/ChargeBar2")
 
 [node name="Bubbles" type="Node3D" parent="SubViewportContainer/SubViewport"]
 
@@ -566,10 +558,10 @@ draw_pass_1 = SubResource("QuadMesh_w34av")
 
 [node name="ChargeBars" type="Node3D" parent="SubViewportContainer/SubViewport"]
 
-[node name="ChargeBarLeft" parent="SubViewportContainer/SubViewport/ChargeBars" instance=ExtResource("21_jay0m")]
+[node name="ChargeBar" parent="SubViewportContainer/SubViewport/ChargeBars" instance=ExtResource("22_wn3h2")]
 transform = Transform3D(-26.7979, 0, -3.0351e-06, 0, 1, 0, 2.34275e-06, 0, -34.7174, -35.5008, 0.5, 8.03134)
 color = Vector3(1.9, 0.25, 0.25)
 
-[node name="ChargeBarRight" parent="SubViewportContainer/SubViewport/ChargeBars" instance=ExtResource("21_jay0m")]
+[node name="ChargeBar2" parent="SubViewportContainer/SubViewport/ChargeBars" instance=ExtResource("22_wn3h2")]
 transform = Transform3D(26.7979, 0, 0, 0, 1, 0, 0, 0, 34.7174, 35.3951, 0.5, 8.03134)
 color = Vector3(0.25, 1.9, 1.9)
