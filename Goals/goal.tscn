@@ -24,7 +24,7 @@ shape = SubResource("BoxShape3D_77562")
 stream = ExtResource("2_f3nld")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(7.36, 0, 0, 0, 7.36, 0, 0, 0, 7.36, 0, 0, 0)
+transform = Transform3D(7.36, 0, 0, 0, 7.36, 0, 0, 0, 7.36, -4.93504, 14, 0)
 material_override = SubResource("StandardMaterial3D_1r5ft")
 mesh = ExtResource("3_n3foh")
 

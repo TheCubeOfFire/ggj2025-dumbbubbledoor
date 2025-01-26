@@ -299,11 +299,11 @@ shape = SubResource("BoxShape3D_2jvef")
 [node name="Goals" type="Node3D" parent="SubViewportContainer/SubViewport"]
 
 [node name="Goal1" parent="SubViewportContainer/SubViewport/Goals" instance=ExtResource("1_orbya")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.9302, 5.4, 1.25167)
+transform = Transform3D(-0.965926, 0.258819, -8.44439e-08, 0.258819, 0.965926, 2.26267e-08, 8.74228e-08, 0, -1, 45.9302, 5.4, 0.25167)
 player_id = 1
 
 [node name="Goal2" parent="SubViewportContainer/SubViewport/Goals" instance=ExtResource("1_orbya")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.2605, 5.4, -2.71724)
+transform = Transform3D(0.949601, -0.313462, 0, 0.313462, 0.949601, 0, 0, 0, 1, -44.7036, 5.4, 0.666199)
 
 [node name="Players" type="Node3D" parent="SubViewportContainer/SubViewport"]
 
