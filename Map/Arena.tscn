@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cqibguwxjj4k8"]
+[gd_scene load_steps=47 format=3 uid="uid://cqibguwxjj4k8"]
 
 [ext_resource type="Script" path="res://Map/arena.gd" id="1_21lse"]
 [ext_resource type="PackedScene" uid="uid://6qqli7csrfdu" path="res://Goals/goal.tscn" id="1_orbya"]
@@ -9,6 +9,7 @@
 [ext_resource type="Shader" path="res://player/pseudoDepthShader.gdshader" id="5_j5pkt"]
 [ext_resource type="Shader" path="res://bubbles/background.gdshader" id="7_x5hmk"]
 [ext_resource type="PackedScene" uid="uid://bjwouy0j4deue" path="res://score/score.tscn" id="8_0ivo8"]
+[ext_resource type="FontFile" uid="uid://bdoh2qdqra3ri" path="res://UI/pansyhand.ttf" id="8_2uus8"]
 [ext_resource type="PackedScene" uid="uid://dayly4pvdvtsb" path="res://obstacles/bouncer.tscn" id="8_tl4ky"]
 [ext_resource type="PackedScene" uid="uid://dmi3nbrha6kqn" path="res://spawners/bubble_spawner.tscn" id="9_6ypwk"]
 [ext_resource type="ArrayMesh" uid="uid://c6nwdgsamkt0h" path="res://score/dots.obj" id="9_uae7s"]
@@ -225,6 +226,8 @@ offset_right = 574.0
 offset_bottom = 58.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_2uus8")
+theme_override_font_sizes/font_size = 128
 text = "Game over"
 label_settings = ExtResource("12_1v54k")
 horizontal_alignment = 1
@@ -331,7 +334,7 @@ charge_bar = NodePath("../../ChargeBars/ChargeBar2")
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 13.2981, 1.52962, 13.3908)
 
 [node name="Bouncer2" parent="SubViewportContainer/SubViewport/Obstacles" instance=ExtResource("8_tl4ky")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -11.6635, 1.52962, -12.2495)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -11.6635, 1.52962, -8.2495)
 
 [node name="Spawners" type="Node3D" parent="SubViewportContainer/SubViewport"]
 
